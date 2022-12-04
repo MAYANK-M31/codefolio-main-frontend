@@ -23,7 +23,14 @@ export default function profile() {
   return (
     <div>
       <p>{username}</p>
-      {!isLoading ? <p>{JSON.stringify(data)}</p> : <p>LOADING..</p>}
+      {!isLoading ? (
+        <div>
+          <img src={data?.gfg?.data?.profile?.userAvatar}></img>
+          <p>{JSON.stringify(data)}</p>
+        </div>
+      ) : (
+        <p>LOADING..</p>
+      )}
     </div>
   );
 }
