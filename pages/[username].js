@@ -36,16 +36,33 @@ export default function profile() {
             <h2>SOFTWARE ENGINEER INTERN</h2>
             <p>Profiles:</p>
             <div className={styles.linksDiv}>
-              <button>
+              <div className={styles.linksBtn} >
                 <img src="/icons/leetcode.png" alt="lc" />
-              </button>
-              <button className="gfgicon">
+              </div>
+              <div className={styles.linksBtn} >
                 <img src="/icons/gfg.png" alt="GFG" />
-              </button>
+              </div>
             </div>
           </div>
         </div>
-        <div className={styles.profileRight}></div>
+        <div className={styles.profileRight}>
+          <div className={styles.numbers} >
+            <h2>250</h2>
+            <p>Total Solved</p>
+          </div>
+          <div className={styles.numbers} >
+            <h2>250</h2>
+            <p style={{color:"#27C93F"}} >Easy</p>
+          </div>
+          <div className={styles.numbers} >
+            <h2>250</h2>
+            <p style={{color:"#FFBD2E"}}>Medium</p>
+          </div>
+          <div className={styles.numbers} >
+            <h2>250</h2>
+            <p style={{color:"#FF5F56"}}>Hard</p>
+          </div>
+        </div>
       </div>
     </div>
   );

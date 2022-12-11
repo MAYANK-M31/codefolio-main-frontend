@@ -1,23 +1,22 @@
 .container {
-  width: 65vw;
-  max-width: 1300px;
+  width: 70vw;
   height: 100vh;
-  /* border: 1px wheat solid; */
   margin: auto;
   display: flex;
   justify-content: center;
+  /* transition: 0.2s ease-in-out 0s; */
 }
 
 .profileDiv {
   width: 95%;
   height: 12vw;
-  max-height: 290px;
   border: 0.18em #88888873 solid;
-  border-radius: 0.8rem;
-  margin-top: 2rem;
+  border-radius: 0.8em;
+  margin-top: 2em;
   display: flex;
   flex-direction: row;
   overflow: hidden;
+  font-size: 1vw;
 }
 
 .profileLeft {
@@ -26,71 +25,105 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-left: 3.5em;
+  padding-left: 2em;
 }
 
 .profileRight {
   width: 50%;
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .profileimg {
-  width: 8.5vw;
-  height: 8.5vw;
-  max-width: 180px;
-  max-height: 180px;
+  width: 10em;
+  height: 10em;
   border-radius: 100%;
-  box-shadow: 0px 0px 150px -45px white;
+  box-shadow: 0em 0em 6em -2em white;
+}
+
+.profileTextDiv h1 {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.profileTextDiv h2 {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.profileTextDiv p {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .profileTextDiv {
   width: 100%;
   margin: auto;
   margin-left: 1.5em;
-  line-height: 0em;
+  font-size: 0.8vw;
   /* background-color: aqua; */
 }
 
 .profileTextDiv h1 {
   font-size: 2em;
-  line-height: 0;
-  padding-bottom: 0.4em;
+  margin-bottom: 0.2em !important;
 }
 
 .profileTextDiv h2 {
   font-size: 1em;
-  padding-bottom: 0.4em;
+  margin-bottom: 0.6em !important;
 }
 
 .profileTextDiv p {
   font-size: 0.9em;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
   color: #ffffff80;
+  margin-bottom: 0.8em !important;
 }
-.linksDiv{
-display: flex;
-flex-wrap: nowrap;
+.linksDiv {
+  display: flex;
+  flex-direction: row;
+  font-size: 2vw;
 }
 
-.linksDiv button {
-  width: 2vw;
-  height: 2vw;
+.linksBtn {
+  width: 1em;
+  height: 1em;
   border-radius: 100vw;
   background-color: transparent;
-  border: 2px white solid;
-  margin-right: 8px;
-  box-shadow: 0px 0px 10px -2px white;
-
+  border: 0.01em rgb(226, 222, 222) solid;
+  margin-right: 0.3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* box-shadow: 0px 0px 10px -2px white; */
 }
 
-.linksDiv button:hover{
-    background-color: #ffffff10;
-
+.linksBtn:hover {
+  background-color: #ffffff10;
+  box-shadow: 0px 0px 15px -5px white;
+  transition: 0.2s ease-in-out 0s;
+  
+  cursor: pointer;
 }
 
+.linksBtn img {
+  width: 60%;
+  height: auto;
+}
 
-.linksDiv img{
-    width: 100%;
-    height: auto;
+.numbers {
+  line-height: 0;
+  text-align: center;
+}
+
+.numbers h2 {
+  font-size: 2em;
+  padding-bottom: 0.2em;
+}
+
+.numbers p {
+  font-size: 0.9em;
+  color: #ffffff80;
 }
