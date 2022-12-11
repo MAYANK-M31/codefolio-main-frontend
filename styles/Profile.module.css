@@ -1,0 +1,96 @@
+.container {
+  width: 65vw;
+  max-width: 1300px;
+  height: 100vh;
+  /* border: 1px wheat solid; */
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.profileDiv {
+  width: 95%;
+  height: 12vw;
+  max-height: 290px;
+  border: 0.18em #88888873 solid;
+  border-radius: 0.8rem;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.profileLeft {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 3.5em;
+}
+
+.profileRight {
+  width: 50%;
+  height: 100%;
+}
+
+.profileimg {
+  width: 8.5vw;
+  height: 8.5vw;
+  max-width: 180px;
+  max-height: 180px;
+  border-radius: 100%;
+  box-shadow: 0px 0px 150px -45px white;
+}
+
+.profileTextDiv {
+  width: 100%;
+  margin: auto;
+  margin-left: 1.5em;
+  line-height: 0em;
+  /* background-color: aqua; */
+}
+
+.profileTextDiv h1 {
+  font-size: 2em;
+  line-height: 0;
+  padding-bottom: 0.4em;
+}
+
+.profileTextDiv h2 {
+  font-size: 1em;
+  padding-bottom: 0.4em;
+}
+
+.profileTextDiv p {
+  font-size: 0.9em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  color: #ffffff80;
+}
+.linksDiv{
+display: flex;
+flex-wrap: nowrap;
+}
+
+.linksDiv button {
+  width: 2vw;
+  height: 2vw;
+  border-radius: 100vw;
+  background-color: transparent;
+  border: 2px white solid;
+  margin-right: 8px;
+  box-shadow: 0px 0px 10px -2px white;
+
+}
+
+.linksDiv button:hover{
+    background-color: #ffffff10;
+
+}
+
+
+.linksDiv img{
+    width: 100%;
+    height: auto;
+}
