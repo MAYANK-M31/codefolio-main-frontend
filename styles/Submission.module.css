@@ -6,7 +6,7 @@
   margin-top: 1em;
   /* overflow: hidden; */
   font-size: 1vw;
-  padding: 0.7em 1em;
+  padding: 1em 1.5em;
 }
 
 .totalsubmission{
@@ -95,10 +95,10 @@
 }
 
 .Point{
-  max-width: 0.765em;
-  max-height: 0.765em;
-  width: 0.765em;
-  height: 0.765em;
+  max-width: 0.745em;
+  max-height: 0.745em;
+  width: 0.745em;
+  height: 0.745em;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 0.18em;
   margin: 0.1em 0.1em;
@@ -108,8 +108,8 @@
 }
 
 .PointTrans{
-  max-width: 0.765em;
-  max-height: 0.765em;
+  max-width: 0.745em;
+  max-height: 0.745em;
   background-color: transparent;
   border-radius: 0.18em;
   margin: 0.1em 0.1em;
