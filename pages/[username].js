@@ -7,6 +7,7 @@ import Profile from "../components/Profile";
 import Submissions from "../components/Submissions";
 import Links from "../components/Links";
 import Projects from "../components/Projects";
+import ExpandCard from "../components/ExpandCard";
 
 export default function profile() {
   const router = useRouter();
@@ -39,6 +40,7 @@ export default function profile() {
         </div>
       </div>
       <Projects />
+      <ExpandCard/>
     </div>
   );
 }
