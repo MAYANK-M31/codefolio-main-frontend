@@ -26,25 +26,6 @@ function HeatMap() {
 
   var calendar = getCalendarinYear(2022);
 
-  //   function BuildMonth({ dates }) {
-  //     for (let i in dates) {
-  //         console.log(i);
-
-  //       for (let j = 0; j <= 6; j++) {
-  //         if (j == moment(dates[i], "X").day()) {
-  //           return <div className={styles.Point}></div>;
-  //         } else {
-  //           return (
-  //             <div
-  //               style={{ color: "transparent" }}
-  //               className={styles.Point}
-  //             ></div>
-  //           );
-  //         }
-  //       }
-  //     }
-  //   }
-
   function getNumWeeksForMonth(year, month) {
     var date = new Date(year, month - 1, 1);
     var day = date.getDay();
@@ -57,29 +38,35 @@ function HeatMap() {
     let start = moment(timestamp[0], "X").day();
     let end = moment(timestamp[timestamp.length - 1], "X").day();
     let Totalweeks = getNumWeeksForMonth(year, month);
+    var date = 0;
 
     return (
       <div className={styles.Box}>
         {/* <BuildMonth dates={timestamp} /> */}
         {[...Array(Totalweeks)].map((_, week) => (
           <div className={styles.WeekRow}>
-            {[...Array(7).keys()].map((index, day) =>
-              week == 0 && day < start ? (
-                <svg className={styles.PointTrans}></svg>
-              ) : week == Totalweeks - 1 && day > end ? (
-                <svg className={styles.PointTrans}></svg>
-              ) : (
+            {[...Array(7).keys()].map((index, day) => {
+              if (week == 0 && day < start) {
+                return <svg className={styles.PointTrans}></svg>;
+              } else if (week == Totalweeks - 1 && day > end) {
+                return <svg className={styles.PointTrans}></svg>;
+              } else {
                 // MAIN POINT
-                <div className={styles.Point}>
-                  <div className={styles.tooltip}>
-                    <p style={{color:"red"}} >{week}+d+{index}+month+{month}</p>
-                  </div>
-                  {/* <rect x="-3em" radius={10} y="-1em">
+                date += 1;
+                return (
+                  <div className={styles.Point}>
+                    <div className={styles.tooltip}>
+                      <p style={{ color: "red" }}>
+                        {date}/{month}/{year}
+                      </p>
+                    </div>
+                    {/* <rect x="-3em" radius={10} y="-1em">
                       <title color="red" >Hello, World!</title>
                     </rect> */}
-                </div>
-              )
-            )}
+                  </div>
+                );
+              }
+            })}
           </div>
         ))}
       </div>
