@@ -2,17 +2,15 @@
   width: 70vw;
   height: 100vh;
   margin: auto;
-  display: flex;
-  justify-content: center;
   /* transition: 0.2s ease-in-out 0s; */
 }
 
 .profileDiv {
   width: 95%;
   height: 12vw;
-  border: 0.18em #88888873 solid;
+  border: 0.15em #88888873 solid;
   border-radius: 0.8em;
-  margin-top: 2em;
+  margin-top: 1em;
   display: flex;
   flex-direction: row;
   overflow: hidden;
@@ -38,8 +36,8 @@
 }
 
 .profileimg {
-  width: 10em;
-  height: 10em;
+  width: 7em;
+  height: 7em;
   border-radius: 100%;
   box-shadow: 0em 0em 6em -2em white;
 }

@@ -1,0 +1,104 @@
+.submissionDiv {
+  width: 95%;
+  height: 14vw;
+  border: 0.15em #88888873 solid;
+  border-radius: 0.8em;
+  margin-top: 1em;
+  /* overflow: hidden; */
+  font-size: 1vw;
+  padding: 0.7em 1em;
+}
+
+.totalsubmission{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: fit-content;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.3em;
+}
+
+.totalsubmission h2 {
+  font-size: 1.3em;
+  margin: 0;
+  padding: 0;
+}
+
+.totalsubmission h2 span {
+  font-size: 0.7em;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+}
+
+.btnYear{
+  width: 5.4em;
+  height: 2.1em;
+  /* padding: 0.4em 0.9em; */
+  border: 0.15em #88888873 solid;
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.btnYear p{
+  cursor: pointer;
+}
+
+.btnYear img{
+  width: 1.2em;
+  height: auto;
+}
+
+.btnYear img{
+  width: 1.2em;
+  height: auto;
+  rotate: -90deg;
+
+}
+
+.btnYear:hover{
+  background-color: white;
+  transition: 0.2s ease-in-out 0s;
+  color: black;
+  box-shadow: 0em 0em 6em -0.6em white;
+
+}
+
+.HeatMap{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  font-size: 100%;
+}
+
+.Box{
+  margin-inline: 0.15em;
+  display: flex;
+  flex-direction: row;
+}
+
+.WeekRow{
+  width: auto;
+  height: auto;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.Point{
+  max-width: 0.765em;
+  max-height: 0.765em;
+  background-color: white;
+  border-radius: 0.18em;
+  margin: 0.1em 0.1em;
+  /* margin-inline: 0.5em; */
+}
