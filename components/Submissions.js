@@ -53,15 +53,25 @@ function HeatMap() {
   }
 
   function MonthDiv({ timestamp, month }) {
-      let year = moment(timestamp,"X").year()
+    let year = moment(timestamp[0], "X").year();
+    let start = moment(timestamp[0], "X").day();
+    let end = moment(timestamp[timestamp.length - 1], "X").day();
+    let Totalweeks = getNumWeeksForMonth(year, month);
+
     return (
       <div className={styles.Box}>
         {/* <BuildMonth dates={timestamp} /> */}
-        {[...Array(getNumWeeksForMonth(year,month))].map((_, day) => (
+        {[...Array(Totalweeks)].map((_, week) => (
           <div className={styles.WeekRow}>
-            {[...Array(7).keys()].map((index) => (
-              <svg className={styles.Point}>{index}</svg>
-            ))}
+            {[...Array(7).keys()].map((index, day) =>
+              week == 0 && day < start ? (
+                <svg className={styles.PointTrans}></svg>
+              ) : week == Totalweeks - 1 && day > end ? (
+                <svg className={styles.PointTrans}></svg>
+              ) : (
+                <svg className={styles.Point}>{index}</svg>
+              )
+            )}
           </div>
         ))}
       </div>

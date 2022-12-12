@@ -102,3 +102,11 @@
   margin: 0.1em 0.1em;
   /* margin-inline: 0.5em; */
 }
+
+.PointTrans{
+  max-width: 0.765em;
+  max-height: 0.765em;
+  background-color: transparent;
+  border-radius: 0.18em;
+  margin: 0.1em 0.1em;
+}
