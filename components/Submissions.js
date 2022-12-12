@@ -69,7 +69,15 @@ function HeatMap() {
               ) : week == Totalweeks - 1 && day > end ? (
                 <svg className={styles.PointTrans}></svg>
               ) : (
-                <svg className={styles.Point}>{index}</svg>
+                // MAIN POINT
+                <div className={styles.Point}>
+                  <div className={styles.tooltip}>
+                    <p style={{color:"red"}} >{week}+d+{index}+month+{month}</p>
+                  </div>
+                  {/* <rect x="-3em" radius={10} y="-1em">
+                      <title color="red" >Hello, World!</title>
+                    </rect> */}
+                </div>
               )
             )}
           </div>
