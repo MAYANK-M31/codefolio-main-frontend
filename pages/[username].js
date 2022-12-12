@@ -40,7 +40,6 @@ export default function profile() {
         </div>
       </div>
       <Projects />
-      <ExpandCard/>
     </div>
   );
 }

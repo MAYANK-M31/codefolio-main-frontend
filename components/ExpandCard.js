@@ -1,9 +1,9 @@
 import styles from "../styles/ExpandCard.module.css";
 
-export default function ExpandCard() {
+export default function ExpandCard({close}) {
   return (
-    <div className={styles.ExpandCard}>
-      <div className={styles.closeBox}>
+    <div id="Card" className={styles.ExpandCard}>
+      <div onClick={()=>close()} className={styles.closeBox}>
         <div
           style={{ backgroundColor: "#27C93F" }}
           className={styles.close}
