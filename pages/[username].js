@@ -5,6 +5,7 @@ import { baseurl } from "../public/baseurl";
 import styles from "../styles/Profile.module.css";
 import Profile from "../components/Profile";
 import Submissions from "../components/Submissions";
+import Links from "../components/Links";
 
 export default function profile() {
   const router = useRouter();
@@ -27,9 +28,16 @@ export default function profile() {
 
   return (
     <div className={styles.container}>
-      <Profile/>
-      <Submissions/>
-
+      <div className={styles.containerTop}>
+        <div className={styles.containerTopLeft} >
+          <Profile />
+          <Submissions />
+        </div>
+        <div className={styles.containerTopRight}>
+          <Links/>
+        </div>
+      </div>
+      ji
     </div>
   );
 }

@@ -1,16 +1,31 @@
 .container {
-  width: 70vw;
   height: 100vh;
-  margin: auto;
+  padding-inline: 5vw;
+  padding-top: 3em;
+  /* padding-inline: 10vw; */
+  /* margin: auto; */
   /* transition: 0.2s ease-in-out 0s; */
 }
 
+.containerTop{
+  /* width: 100vw; */
+  display: flex;
+  flex-direction: row;
+}
+
+.containerTopLeft{
+  width: 75vw;
+}
+
+.containerTopRight{
+  width: 25vw;
+}
+
 .profileDiv {
-  width: 95%;
+  width: 100%;
   height: 12vw;
   border: 0.15em #88888873 solid;
   border-radius: 0.8em;
-  margin-top: 1em;
   display: flex;
   flex-direction: row;
   overflow: hidden;

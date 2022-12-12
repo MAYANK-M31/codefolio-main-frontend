@@ -45,16 +45,4 @@ export default function Profile() {
   );
 }
 
-{
-  /* <div>
-      <p>{username}</p>
-      {!isLoading ? (
-        <div>
-          <img src={data?.gfg?.data?.profile?.userAvatar}></img>
-          <p>{JSON.stringify(data)}</p>
-        </div>
-      ) : (
-        <p>LOADING..</p>
-      )}
-    </div> */
-}
+
