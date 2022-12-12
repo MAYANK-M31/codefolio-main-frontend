@@ -1,7 +1,7 @@
 .container {
   height: 100vh;
   padding-inline: 5vw;
-  padding-top: 3em;
+  padding-top: 3vw;
   /* padding-inline: 10vw; */
   /* margin: auto; */
   /* transition: 0.2s ease-in-out 0s; */
@@ -28,7 +28,7 @@
   border-radius: 0.8em;
   display: flex;
   flex-direction: row;
-  overflow: hidden;
+  /* overflow: hidden; */
   font-size: 1vw;
 }
 
@@ -54,7 +54,7 @@
   width: 7em;
   height: 7em;
   border-radius: 100%;
-  box-shadow: 0em 0em 6em -2em white;
+  box-shadow: 0em 0em 8em -1.7em white;
 }
 
 .profileTextDiv h1 {

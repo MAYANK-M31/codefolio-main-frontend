@@ -6,6 +6,7 @@ import styles from "../styles/Profile.module.css";
 import Profile from "../components/Profile";
 import Submissions from "../components/Submissions";
 import Links from "../components/Links";
+import Projects from "../components/Projects";
 
 export default function profile() {
   const router = useRouter();
@@ -37,7 +38,7 @@ export default function profile() {
           <Links/>
         </div>
       </div>
-      ji
+      <Projects />
     </div>
   );
 }
