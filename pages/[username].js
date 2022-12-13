@@ -12,28 +12,28 @@ import ExpandCard from "../components/ExpandCard";
 export default function profile() {
   const router = useRouter();
 
-  // const { username } = router.query;
-  // const { isLoading, error, data } = useQuery(
-  //   "repoData",
-  //   () =>
-  //     fetch(`${baseurl}/profile?username=${username}`).then((res) =>
-  //       res.json()
-  //     ),
-  //   {
-  //     enabled: !!username,
-  //   }
-  // );
+  const { username } = router.query;
+  const { isLoading, error, data } = useQuery(
+    "repoData",
+    () =>
+      fetch(`${baseurl}/profile?username=${username}`).then((res) =>
+        res.json()
+      ),
+    {
+      enabled: !!username,
+    }
+  );
 
-  // if (error) return console.error(error);
+  if (error) return console.error(error);
 
-  // console.log(data);
+  console.log(data);
 
   return (
     <div className={styles.container}>
       <div className={styles.containerTop}>
         <div className={styles.containerTopLeft} >
-          <Profile />
-          <Submissions />
+          <Profile data={data} />
+          <Submissions data={data} />
         </div>
         <div className={styles.containerTopRight}>
           <Links/>
