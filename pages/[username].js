@@ -10,8 +10,9 @@ import Projects from "../components/Projects";
 import ExpandCard from "../components/ExpandCard";
 
 export default function profile() {
-  const router = useRouter();
+  const [usernotfound, setusernotfound] = useState(false);
 
+  const router = useRouter();
   const { username } = router.query;
   const { isLoading, error, data } = useQuery(
     "repoData",
@@ -24,22 +25,38 @@ export default function profile() {
     }
   );
 
-  if (error) return console.error(error);
+  if (error) return console.log(error);
 
-  console.log(data);
+  useEffect(() => {
+    if (data && data?.status == 404) {
+      setusernotfound(true);
+    }
+  }, [isLoading]);
 
   return (
     <div className={styles.container}>
-      <div className={styles.containerTop}>
-        <div className={styles.containerTopLeft} >
-          <Profile data={data} />
-          <Submissions data={data} />
-        </div>
-        <div className={styles.containerTopRight}>
-          <Links/>
-        </div>
+      {usernotfound ? (
+        <h1>USER NOT FOUND</h1>
+      ) : (
+        <>
+          <div className={styles.containerTop}>
+            <div className={styles.containerTopLeft}>
+              <Profile data={data} />
+              <Submissions data={data} />
+            </div>
+            <div className={styles.containerTopRight}>
+              <Links />
+            </div>
+          </div>
+          <Projects />
+        </>
+      )}
+
+      {/* CODEFOLIO LAST BRANDING */}
+      <div className="ENDLOGO">
+      <img  src="/icons/madewithlove.svg" />
+
       </div>
-      <Projects />
     </div>
   );
 }

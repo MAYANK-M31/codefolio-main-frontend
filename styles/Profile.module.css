@@ -1,7 +1,7 @@
 .container {
-  height: 100vh;
   padding-inline: 5vw;
   padding-top: 3vw;
+  padding-bottom: 3vw;
   /* padding-inline: 10vw; */
   /* margin: auto; */
   /* transition: 0.2s ease-in-out 0s; */

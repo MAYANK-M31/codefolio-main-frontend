@@ -16,9 +16,6 @@ export default function Projects() {
         <Card open={toogleModal}/>
         <Card open={toogleModal}/>
         <Card open={toogleModal}/>
-        <Card open={toogleModal}/>
-        <Card open={toogleModal}/>
-        <Card open={toogleModal}/>
 
       </div>
       <Modal onRequestClose={toogleModal} isOpen={open}>

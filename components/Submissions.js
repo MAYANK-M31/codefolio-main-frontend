@@ -39,7 +39,7 @@ export default function Submissions({ data }) {
     let SubmissionCalendar = getSubmissionCalendar(
       data?.gfg?.data?.userCalendar?.submissionCalendar,
       JSON.parse(
-        data?.leetcode?.data?.matchedUser?.userCalendar?.submissionCalendar
+        data && data?.leetcode && data?.leetcode?.data?.matchedUser?.userCalendar?.submissionCalendar || "{}"
       )
     );
 
@@ -71,7 +71,6 @@ export default function Submissions({ data }) {
 
 // COMPONENT
 function HeatMap({ data }) {
-  console.log(data);
   var getDaysOfMonth = function (year, month) {
     var temp = [];
     var days = moment(`${year}-${month}`, "YYYY-MM").daysInMonth();
