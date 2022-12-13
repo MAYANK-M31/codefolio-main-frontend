@@ -1,7 +1,70 @@
 import moment from "moment";
+import { useEffect, useState } from "react";
+import _ from "underscore";
 import styles from "../styles/Submission.module.css";
+const currentYear = [moment(Date.now(), "x").year()];
+export default function Submissions({ data }) {
+  const [years, setyears] = useState(currentYear);
+  const [calendarData, setcalendarData] = useState({});
 
-function HeatMap() {
+  const getActiveYears = (gfg = [], leetcode = []) => {
+    return _.union(gfg, leetcode).sort().reverse();
+  };
+
+  const getSubmissionCalendar = (gfg = {}, leetcode = {}) => {
+    const convert = (x) => {
+      var Temp = {};
+      Object.keys(x).map(
+        (e) => (Temp[moment(e, "X").format("DD-MM-YYYY")] = x[e])
+      );
+
+      return Temp;
+    };
+    gfg = convert(gfg);
+    leetcode = convert(leetcode);
+    return { gfg, leetcode };
+  };
+
+  useEffect(() => {
+    if (!data) return;
+
+    let ActiveYears = getActiveYears(
+      data?.gfg?.data?.userCalendar?.activeYears,
+      data?.leetcode?.data?.matchedUser?.userCalendar?.activeYears
+    );
+
+    let SubmissionCalendar = getSubmissionCalendar(
+      data?.gfg?.data?.userCalendar?.submissionCalendar,
+      JSON.parse(
+        data?.leetcode?.data?.matchedUser?.userCalendar?.submissionCalendar
+      )
+    );
+
+    // UPDATE STATES
+    setcalendarData(SubmissionCalendar);
+    setyears(ActiveYears);
+  }, [data]);
+
+  return (
+    <div className={styles.submissionDiv}>
+      <div className={styles.totalsubmission}>
+        <h2>
+          697 <span>Submission in the last year</span>
+        </h2>
+        <div className={styles.btnYear}>
+          <p>{years[0]}</p>
+          <img src="/icons/angle-down.svg" />
+        </div>
+      </div>
+
+      <HeatMap data={calendarData} />
+    </div>
+  );
+}
+
+// COMPONENT
+function HeatMap({ data }) {
+  console.log(data);
   var getDaysOfMonth = function (year, month) {
     var temp = [];
     var days = moment(`${year}-${month}`, "YYYY-MM").daysInMonth();
@@ -53,11 +116,37 @@ function HeatMap() {
               } else {
                 // MAIN POINT
                 date += 1;
+                var currDate = `${
+                  JSON.stringify(date).length == 1 ? "0" + `${date}` : date
+                }-${
+                  JSON.stringify(month).length == 1 ? "0" + `${month}` : month
+                }-${year}`;
+
+                let submissions = {
+                  gfg: (data && data?.gfg && data?.gfg[currDate]) || 0,
+                  leetcode:
+                    (data && data?.leetcode && data?.leetcode[currDate]) || 0,
+                };
+
+                let totalsubmission = submissions.gfg + submissions.leetcode;
+
                 return (
-                  <div className={styles.Point}>
+                  <div
+                    style={{
+                      backgroundColor:
+                        totalsubmission == 0
+                          ? "#FFFFFF36"
+                          : totalsubmission <= 2
+                          ? "#2CBB5DBF"
+                          : totalsubmission <= 8
+                          ? "#2CBB5D"
+                          : "#6BCF8E",
+                    }}
+                    className={styles.Point}
+                  >
                     <div className={styles.tooltip}>
                       <p style={{ color: "red" }}>
-                        {date}/{month}/{year}
+                        {currDate},{totalsubmission}
                       </p>
                     </div>
                     {/* <rect x="-3em" radius={10} y="-1em">
@@ -78,24 +167,6 @@ function HeatMap() {
       {calendar.map((_, month) => (
         <MonthDiv timestamp={_} month={month + 1} />
       ))}
-    </div>
-  );
-}
-
-export default function Submissions() {
-  return (
-    <div className={styles.submissionDiv}>
-      <div className={styles.totalsubmission}>
-        <h2>
-          697 <span>Submission in the last year</span>
-        </h2>
-        <div className={styles.btnYear}>
-          <p>2022</p>
-          <img src="/icons/angle-down.svg" />
-        </div>
-      </div>
-
-      <HeatMap />
     </div>
   );
 }
