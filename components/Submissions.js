@@ -6,22 +6,25 @@ const currentYear = [moment(Date.now(), "x").year()];
 export default function Submissions({ data }) {
   const [years, setyears] = useState(currentYear);
   const [calendarData, setcalendarData] = useState({});
+  const [totalSubmission, settotalSubmission] = useState(0);
 
   const getActiveYears = (gfg = [], leetcode = []) => {
     return _.union(gfg, leetcode).sort().reverse();
   };
 
   const getSubmissionCalendar = (gfg = {}, leetcode = {}) => {
+    let submissioncount = 0;
     const convert = (x) => {
       var Temp = {};
       Object.keys(x).map(
-        (e) => (Temp[moment(e, "X").format("DD-MM-YYYY")] = x[e])
+        (e) => (submissioncount += x[e],Temp[moment(e, "X").format("DD-MM-YYYY")] = x[e])
       );
 
       return Temp;
     };
     gfg = convert(gfg);
     leetcode = convert(leetcode);
+    settotalSubmission(submissioncount);
     return { gfg, leetcode };
   };
 
@@ -45,11 +48,15 @@ export default function Submissions({ data }) {
     setyears(ActiveYears);
   }, [data]);
 
+  const SetcountSubmission = (count) => {
+    settotalSubmission(count);
+  };
+
   return (
     <div className={styles.submissionDiv}>
       <div className={styles.totalsubmission}>
         <h2>
-          697 <span>Submission in the last year</span>
+          {totalSubmission} <span>Submission in the last year</span>
         </h2>
         <div className={styles.btnYear}>
           <p>{years[0]}</p>
@@ -57,7 +64,7 @@ export default function Submissions({ data }) {
         </div>
       </div>
 
-      <HeatMap data={calendarData} />
+      <HeatMap countSubmission={SetcountSubmission} data={calendarData} />
     </div>
   );
 }
