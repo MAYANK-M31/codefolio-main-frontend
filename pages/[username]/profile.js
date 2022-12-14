@@ -83,10 +83,29 @@ export default function profile() {
             />
           </div>
 
-          <button
-          className={styles.btn}
-            type="submit"
-          >
+          <div class="mb-6">
+            <label
+              for="email"
+              class="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
+            >
+              Profile Photo
+            </label>
+            <div className={styles.imagelinkdiv}>
+              <div className={styles.imageinput}>
+                <input placeholder="Paste image link or select" required />
+                <div className={styles.selectIcon} >
+                  <img src="/icons/gfg.png" />
+                  <img src="/icons/leetcode.png" />
+                  <img src="/icons/google.png" />
+                </div>
+              </div>
+              <div className={styles.profilepic}>
+                <img />
+              </div>
+            </div>
+          </div>
+
+          <button className={styles.btn} type="submit">
             Save
           </button>
         </form>
