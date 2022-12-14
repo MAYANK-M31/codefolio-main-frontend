@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../styles/NavBar.module.css";
-import Router from 'next/router'
+import Router from "next/router";
 
 import {
   getAuth,
@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../Firebase/firebase";
 import { baseurl } from "../../public/baseurl";
+import { setCookie } from "cookies-next";
 
 export default function GoogleAuth() {
   const [isLoading, setisLoading] = useState(false);
@@ -31,12 +32,13 @@ export default function GoogleAuth() {
             }).then((res) => res.json());
             // console.log(data);
             if (data.status == 200) {
+              setCookie("token", data.token);
               console.log(data);
               setisLoading(false);
-              Router.push('/mayank-m31/profile')
+              Router.push("/mayank-m31/profile");
             } else {
               setisLoading(false);
-              alert("TRY AGAIN")
+              alert("TRY AGAIN");
             }
             console.log(token);
           });
