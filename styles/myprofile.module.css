@@ -1,0 +1,42 @@
+.container {
+  width: 100%;
+  padding-top: 3.4vw;
+  font-size: 1vw;
+}
+
+.Box {
+  width: 30vw;
+  border: 0.15rem #88888873 solid;
+  border-radius: 0.8rem;
+  padding: 2rem 2rem;
+  margin-inline: auto;
+  margin-top: 2rem;
+}
+
+.input {
+  width: 100%;
+  border-radius: 0.6rem;
+  font-size: 1.5rem;
+  background-color: #1c1c1c !important;
+  padding: 0.5rem 0.8rem;
+}
+
+.btn {
+  width: 100%;
+  border-radius: 0.6rem;
+  font-size: 1.5rem;
+  padding: 0.5rem 0.8rem;
+  background-color: #2cbb5d;
+  font-weight: 500;
+  margin-top: 1rem;
+  transition: 0.2s ease-in-out 0s;
+}
+
+.btn:hover {
+  box-shadow: 0rem 0rem 2rem -0.6rem #2cbb5d;
+  transform: scale(1.01);
+}
+
+.btn:active {
+  transform: scale(0.9);
+}

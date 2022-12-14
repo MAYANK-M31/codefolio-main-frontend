@@ -1,13 +1,13 @@
 import react, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useQuery } from "react-query";
-import { baseurl } from "../public/baseurl";
-import styles from "../styles/Profile.module.css";
-import Profile from "../components/Profile";
-import Submissions from "../components/Submissions";
-import Links from "../components/Links";
-import Projects from "../components/Projects";
-import ExpandCard from "../components/ExpandCard";
+import { baseurl } from "../../public/baseurl";
+import styles from "../../styles/Profile.module.css";
+import Profile from "../../components/Profile";
+import Submissions from "../../components/Submissions";
+import Links from "../../components/Links";
+import Projects from "../../components/Projects";
+import ExpandCard from "../../components/ExpandCard";
 
 export default function profile() {
   const [usernotfound, setusernotfound] = useState(false);

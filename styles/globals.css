@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -9,28 +13,6 @@ body {
   
 }
 
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0); 
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  line-height: 0;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.4); 
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0); 
-}
-::-webkit-scrollbar-thumb:window-inactive {
-  background: rgba(255, 255, 255, 0); 
-}
 
 .ReactModal__Overlay {
   background-color: transparent !important;
@@ -63,6 +45,8 @@ a {
   }
 }
 
+
+
 .ENDLOGO{
   width: 100%;
   display: flex;
@@ -76,4 +60,30 @@ a {
 .ENDLOGO img{
   width: 20em;
   height: auto;
+}
+
+
+
+
+/* SCROLL STYLING */
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0); 
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  line-height: 0;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.4); 
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(255, 255, 255, 0); 
 }

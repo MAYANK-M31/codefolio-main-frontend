@@ -1,0 +1,20 @@
+.Main {
+    width: 100%;
+    height: 3.4vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5vw;
+    border-bottom: 0.1em #88888873 solid;
+    position: fixed;
+    top: 0;
+  }
+  
+  .Main img {
+    width: 9.5em;
+    height: auto;
+  }
+  
+
+  
