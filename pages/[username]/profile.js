@@ -32,6 +32,20 @@ export default function profile() {
               for="email"
               class="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
             >
+              Username
+            </label>
+            <input
+              className={styles.input}
+              placeholder="Ex. CODER_450"
+              required
+            />
+          </div>
+
+          <div class="mb-6">
+            <label
+              for="email"
+              class="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
+            >
               Portfolio Title
             </label>
             <input

@@ -9,6 +9,8 @@
     border-bottom: 0.1em #88888873 solid;
     position: fixed;
     top: 0;
+    background-color: black;
+    z-index: 10000;
   }
   
   .Main img {
