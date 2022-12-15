@@ -1,12 +1,12 @@
 .submissionDiv {
   width: 100%;
   height: 14vw;
-  border: 0.15em #88888873 solid;
-  border-radius: 0.8em;
-  margin-top: 1em;
+  border: 0.15rem #88888873 solid;
+  border-radius: 0.8rem;
+  margin-top: 1rem;
   /* overflow: hidden; */
   font-size: 1vw;
-  padding: 1em 1.5em;
+  padding: 1rem 1.5rem;
 }
 
 .totalsubmission{
@@ -16,28 +16,28 @@
   height: fit-content;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.3em;
+  margin-bottom: 0.3rem;
 }
 
 .totalsubmission h2 {
-  font-size: 1.3em;
+  font-size: 1.3rem;
   margin: 0;
   padding: 0;
 }
 
 .totalsubmission h2 span {
-  font-size: 0.7em;
+  font-size: 0.7rem;
   font-weight: 300;
   margin: 0;
   padding: 0;
 }
 
 .btnYear{
-  width: 5.4em;
-  height: 2.1em;
-  /* padding: 0.4em 0.9em; */
-  border: 0.15em #88888873 solid;
-  border-radius: 0.5em;
+  width: 5.4rem;
+  height: 2.1rem;
+  /* padding: 0.4rem 0.9rem; */
+  border: 0.15rem #88888873 solid;
+  border-radius: 0.5rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -50,12 +50,12 @@
 }
 
 .btnYear img{
-  width: 1.2em;
+  width: 1.2rem;
   height: auto;
 }
 
 .btnYear img{
-  width: 1.2em;
+  width: 1.2rem;
   height: auto;
   rotate: -90deg;
 
@@ -65,7 +65,7 @@
   background-color: white;
   transition: 0.2s ease-in-out 0s;
   color: black;
-  box-shadow: 0em 0em 6em -0.6em white;
+  box-shadow: 0rem 0rem 6rem -0.6rem white;
 
 }
 
@@ -78,7 +78,7 @@
 }
 
 .Box{
-  margin-inline: 0.15em;
+  margin-inline: 0.15rem;
   display: flex;
   flex-direction: row;
 }
@@ -95,16 +95,16 @@
 }
 
 .Point{
-  max-width: 0.745em;
-  max-height: 0.745em;
-  width: 0.745em;
-  height: 0.745em;
+  max-width: 0.745rem;
+  max-height: 0.745rem;
+  width: 0.745rem;
+  height: 0.745rem;
   /* background-color: rgba(255, 255, 255, 0.8); */
-  border-radius: 0.18em;
-  margin: 0.1em 0.1em;
+  border-radius: 0.18rem;
+  margin: 0.1rem 0.1rem;
   overflow: visible;
   cursor: pointer;
-  /* margin-inline: 0.5em; */
+  /* margin-inline: 0.5rem; */
 
 }
 
@@ -118,11 +118,11 @@
 
 
 .PointTrans{
-  max-width: 0.745em;
-  max-height: 0.745em;
+  max-width: 0.745rem;
+  max-height: 0.745rem;
   background-color: transparent;
-  border-radius: 0.18em;
-  margin: 0.1em 0.1em;
+  border-radius: 0.18rem;
+  margin: 0.1rem 0.1rem;
 }
 
 #tooltip {
@@ -133,13 +133,13 @@
 }
 
 .Point .tooltip{
-  width:10em;
-  height: 1.5em;
-  border-radius: 0.4em;
+  width:10rem;
+  height: 1.5rem;
+  border-radius: 0.4rem;
   background-color: white;
   position: relative;
-  left: -4em;
-  top: -3em;
+  left: -4rem;
+  top: -3rem;
   visibility: hidden;
   
 }
