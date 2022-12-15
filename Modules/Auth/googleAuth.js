@@ -33,6 +33,7 @@ export default function GoogleAuth() {
             // console.log(data);
             if (data.status == 200) {
               setCookie("token", data.token);
+              setCookie("googleProfile", data.profile);
               console.log(data);
               setisLoading(false);
               Router.push("/mayank-m31/profile");
