@@ -11,8 +11,9 @@ var problemsSolved = {
 export default function Profile({ data }) {
   const [problemCount, setproblemCount] = useState(problemsSolved);
   const [user, setuser] = useState(null);
-  const [globalrank,setglobalrank] = useState(0)
-  const [schoolrank,setschoolrank] = useState(0)
+  const [globalrank, setglobalrank] = useState(0);
+  const [schoolrank, setschoolrank] = useState(0);
+  const [imagelink, setimagelink] = useState("");
 
   const gettotalSolved = (gfg, leetcode) => {
     return {
@@ -44,20 +45,22 @@ export default function Profile({ data }) {
       console.log(totalSolved);
       setproblemCount(totalSolved);
       setuser(data.user);
-      setschoolrank(data?.gfg?.data?.profile?.rank)
-      setglobalrank(data?.leetcode?.data?.matchedUser?.profile?.ranking)
+      setimagelink(data.user.profile);
+      setschoolrank(data?.gfg?.data?.profile?.rank);
+      setglobalrank(data?.leetcode?.data?.matchedUser?.profile?.ranking);
     }
   }, [data]);
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+  }
 
   return (
     <div className={styles.profileDiv}>
       <div className={styles.profileLeft}>
         <img
-          src="https://media.geeksforgeeks.org/auth/profile/0qzwgked2yyt9siozgb3"
+          referrerpolicy="no-referrer"
+          src={imagelink}
           className={styles.profileimg}
         />
         <div className={styles.profileTextDiv}>
@@ -67,13 +70,17 @@ export default function Profile({ data }) {
           <span>Rank:</span>
           <div className={styles.linksDiv}>
             <div className={styles.rank}>
-              <img style={{marginTop:"0.1rem"}} src="/icons/globe.png" alt="lc" />
+              <img
+                style={{ marginTop: "0.1rem" }}
+                src="/icons/globe.png"
+                alt="lc"
+              />
               <p>{globalrank == 0 ? "-" : numberWithCommas(globalrank)}</p>
             </div>
 
             <div className={styles.rank}>
               <img src="/icons/school.png" alt="lc" />
-              <p >{schoolrank == 0 ? "-" : numberWithCommas(schoolrank)}</p>
+              <p>{schoolrank == 0 ? "-" : numberWithCommas(schoolrank)}</p>
             </div>
           </div>
         </div>
