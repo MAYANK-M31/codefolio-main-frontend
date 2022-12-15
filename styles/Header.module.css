@@ -16,7 +16,84 @@
   .Main img {
     width: 9.5em;
     height: auto;
+    margin-right: auto;
   }
   
 
-  
+  .linkBar{
+    width: fit-content;
+    background-color: #1c1c1c;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0.4rem 0.7rem;
+    border-radius: 0.7rem;
+    cursor: pointer;
+
+  }
+
+  .linkBar img{
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .linkBar p{
+    margin-inline: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .section{
+    width: calc(100% / 3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .utility{
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: fit-content;
+    justify-content: space-between;
+
+  }
+
+  .refresh{
+    border-radius: 100%;
+    background-color: #1c1c1c;
+    padding: 0.6rem;
+    border-radius: 100%;
+    margin-right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .refresh img{
+    width: 1rem;
+    height: 1rem;
+  }
+
+
+  .userBtn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #1c1c1c;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+
+  .userBtn img{
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .userBtn p{
+    font-size: 0.9rem;
+
+  }
