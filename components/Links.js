@@ -1,10 +1,18 @@
+import Router  from "next/router";
 import styles from "../styles/Links.module.css";
 
-export default function Links() {
+export default function Links({editable=false}) {
   return (
     <div className={styles.LinksDiv}>
       <div className={styles.NavBar}>
-        <h1>Links</h1>
+        <div className={styles.headingdiv} >
+          <h1>Links</h1>
+          {
+            editable && <img onClick={()=>{Router.push(Router.asPath+"/link")}}  src="/icons/circle-add.svg" />
+          }
+          
+        </div>
+
         <div className={styles.closeBox}>
           <div
             style={{ backgroundColor: "#27C93F" }}
@@ -45,7 +53,6 @@ export default function Links() {
         {/* <img src="/icons/linkedin.png" /> */}
         <h3>Resume</h3>
       </div>
-      
     </div>
   );
 }

@@ -13,7 +13,7 @@ export default function Profile({ data }) {
   const [user, setuser] = useState(null);
   const [globalrank, setglobalrank] = useState(0);
   const [schoolrank, setschoolrank] = useState(0);
-  const [imagelink, setimagelink] = useState("");
+  const [imagelink, setimagelink] = useState("/logo.svg");
 
   const gettotalSolved = (gfg, leetcode) => {
     return {
@@ -37,15 +37,16 @@ export default function Profile({ data }) {
   };
 
   useEffect(() => {
-    if (data) {
+console.log(data);
+    if (data && data?.status == 200) {
       let totalSolved = gettotalSolved(
         data?.gfg?.data?.submitStats,
         data?.leetcode?.data?.matchedUser?.submitStats?.totalSubmissionNum
       );
       console.log(totalSolved);
       setproblemCount(totalSolved);
-      setuser(data.user);
-      setimagelink(data.user.profile);
+      setuser(data?.user);
+      setimagelink(data?.user.profile);
       setschoolrank(data?.gfg?.data?.profile?.rank);
       setglobalrank(data?.leetcode?.data?.matchedUser?.profile?.ranking);
     }
@@ -55,13 +56,15 @@ export default function Profile({ data }) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+  
   return (
     <div className={styles.profileDiv}>
       <div className={styles.profileLeft}>
         <img
+          onError={() => setimagelink("/logo.svg")}
+          className={styles.profileimg}
           referrerpolicy="no-referrer"
           src={imagelink}
-          className={styles.profileimg}
         />
         <div className={styles.profileTextDiv}>
           <h1>{user?.name}</h1>
