@@ -10,28 +10,48 @@ var problemsSolved = {
 
 export default function Profile({ data }) {
   const [problemCount, setproblemCount] = useState(problemsSolved);
+  const [user, setuser] = useState(null);
+  const [globalrank,setglobalrank] = useState(0)
+  const [schoolrank,setschoolrank] = useState(0)
 
   const gettotalSolved = (gfg, leetcode) => {
     return {
       total:
-        (gfg && JSON.parse(gfg[0]?.count)) || 0 + (leetcode && leetcode[0]?.count) || 0,
+        (gfg && JSON.parse(gfg[0]?.count)) ||
+        0 + (leetcode && leetcode[0]?.count) ||
+        0,
       easy:
-        (gfg && JSON.parse(gfg[3]?.count)) || 0 + (leetcode && leetcode[1]?.count) || 0,
+        (gfg && JSON.parse(gfg[3]?.count)) ||
+        0 + (leetcode && leetcode[1]?.count) ||
+        0,
       medium:
-        (gfg && JSON.parse(gfg[4]?.count)) || 0 + (leetcode && leetcode[2]?.count) || 0,
+        (gfg && JSON.parse(gfg[4]?.count)) ||
+        0 + (leetcode && leetcode[2]?.count) ||
+        0,
       hard:
-        (gfg && JSON.parse(gfg[5]?.count)) || 0 + (leetcode && leetcode[3]?.count) || 0,
+        (gfg && JSON.parse(gfg[5]?.count)) ||
+        0 + (leetcode && leetcode[3]?.count) ||
+        0,
     };
   };
 
   useEffect(() => {
-    let totalSolved = gettotalSolved(
-      data?.gfg?.data?.submitStats,
-      data?.leetcode?.data?.matchedUser?.submitStats?.totalSubmissionNum
-    );
-    console.log(totalSolved);
-    setproblemCount(totalSolved);
+    if (data) {
+      let totalSolved = gettotalSolved(
+        data?.gfg?.data?.submitStats,
+        data?.leetcode?.data?.matchedUser?.submitStats?.totalSubmissionNum
+      );
+      console.log(totalSolved);
+      setproblemCount(totalSolved);
+      setuser(data.user);
+      setschoolrank(data?.gfg?.data?.profile?.rank)
+      setglobalrank(data?.leetcode?.data?.matchedUser?.profile?.ranking)
+    }
   }, [data]);
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
   return (
     <div className={styles.profileDiv}>
@@ -41,15 +61,19 @@ export default function Profile({ data }) {
           className={styles.profileimg}
         />
         <div className={styles.profileTextDiv}>
-          <h1>MAYANK MALHOTRA</h1>
-          <h2>SOFTWARE ENGINEER INTERN</h2>
-          <p>Profiles:</p>
+          <h1>{user?.name}</h1>
+          <h2>{user?.title}</h2>
+          <p>{user?.bio}</p>
+          <span>Rank:</span>
           <div className={styles.linksDiv}>
-            <div className={styles.linksBtn}>
-              <img src="/icons/leetcode.png" alt="lc" />
+            <div className={styles.rank}>
+              <img style={{marginTop:"0.1rem"}} src="/icons/globe.png" alt="lc" />
+              <p>{globalrank == 0 ? "-" : numberWithCommas(globalrank)}</p>
             </div>
-            <div className={styles.linksBtn}>
-              <img src="/icons/gfg.png" alt="GFG" />
+
+            <div className={styles.rank}>
+              <img src="/icons/school.png" alt="lc" />
+              <p >{schoolrank == 0 ? "-" : numberWithCommas(schoolrank)}</p>
             </div>
           </div>
         </div>
