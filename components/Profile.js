@@ -14,13 +14,13 @@ export default function Profile({ data }) {
   const gettotalSolved = (gfg, leetcode) => {
     return {
       total:
-        ((gfg && JSON.parse(gfg[0]?.count)) + (leetcode && leetcode[0]?.count)) || 0,
+        (gfg && JSON.parse(gfg[0]?.count)) || 0 + (leetcode && leetcode[0]?.count) || 0,
       easy:
-        ((gfg && JSON.parse(gfg[3]?.count)) + (leetcode && leetcode[1]?.count)) || 0,
+        (gfg && JSON.parse(gfg[3]?.count)) || 0 + (leetcode && leetcode[1]?.count) || 0,
       medium:
-        ((gfg && JSON.parse(gfg[4]?.count)) + (leetcode && leetcode[2]?.count)) || 0,
+        (gfg && JSON.parse(gfg[4]?.count)) || 0 + (leetcode && leetcode[2]?.count) || 0,
       hard:
-        ((gfg && JSON.parse(gfg[5]?.count)) + (leetcode && leetcode[3]?.count)) || 0,
+        (gfg && JSON.parse(gfg[5]?.count)) || 0 + (leetcode && leetcode[3]?.count) || 0,
     };
   };
 
@@ -29,6 +29,7 @@ export default function Profile({ data }) {
       data?.gfg?.data?.submitStats,
       data?.leetcode?.data?.matchedUser?.submitStats?.totalSubmissionNum
     );
+    console.log(totalSolved);
     setproblemCount(totalSolved);
   }, [data]);
 

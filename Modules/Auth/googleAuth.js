@@ -15,6 +15,7 @@ import { setCookie } from "cookies-next";
 export default function GoogleAuth() {
   const [isLoading, setisLoading] = useState(false);
 
+
   const googleSignIn = () => {
     setisLoading(true);
     try {
@@ -36,7 +37,7 @@ export default function GoogleAuth() {
               setCookie("googleProfile", data.profile);
               console.log(data);
               setisLoading(false);
-              Router.push("/mayank-m31/profile");
+              Router.push(`/${data?.data?.username}/profile`);
             } else {
               setisLoading(false);
               alert("TRY AGAIN");

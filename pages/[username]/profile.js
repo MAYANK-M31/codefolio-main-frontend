@@ -6,19 +6,20 @@ import { getCookie } from "cookies-next";
 import { baseurl } from "../../public/baseurl";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
+import  Router  from "next/router";
 
 export default function profile() {
   const Token = getCookie("token");
   const googleProfile = getCookie("googleProfile");
 
-  const [Data, setData] = useState(null);
+  const [isSaving, setisSaving] = useState(false);
 
   const [name, setname] = useState("");
   const [username, setusername] = useState("");
   const [title, settitle] = useState("");
   const [bio, setbio] = useState("");
-  const [leetcodeId, setleetcodeId] = useState("");
-  const [gfgId, setgfgId] = useState("");
+  const [leetcodeId, setleetcodeId] = useState(null);
+  const [gfgId, setgfgId] = useState(null);
   const [imagelink, setimagelink] = useState("/vercel.svg");
   const [imagelinkValue, setimagelinkValue] = useState("");
 
@@ -52,7 +53,7 @@ export default function profile() {
       setimagelink(x.profile);
       setleetcodeId(x.websites?.leetcode);
       setgfgId(x.websites?.gfg);
-      setimagelink(x.profile);
+      setimagelinkValue(x.profile);
       setbio(x.bio);
       getImagePlatform(x.profile);
     }
@@ -81,6 +82,7 @@ export default function profile() {
     setImagePlatform(v);
 
     if (v == "google") {
+      setimagelinkValue(googleProfile);
       setimagelink(googleProfile);
     }
   };
@@ -96,7 +98,10 @@ export default function profile() {
   };
 
   const Save = async (e) => {
+    setisSaving(true)
     e.preventDefault();
+    if (!leetcodeId && !gfgId)
+      return toast.error("Either Leetcode or GFG ID is required");
 
     const body = {
       username: username,
@@ -105,8 +110,8 @@ export default function profile() {
       name: name,
       title: title,
       bio: bio,
-      profile: imagelink,
-    }
+      profile: imagelinkValue,
+    };
     await axios({
       method: "post",
       url: `${baseurl}/update`,
@@ -115,15 +120,17 @@ export default function profile() {
         Authorization: "Bearer " + Token,
       },
     })
-      .then(({data})=>{
-        // if(data.status != 200) return toast.error(data?.message)
+      .then(({ data }) => {
+        if(data.status != 200) return toast.error(data?.message)
         console.log(data);
-        toast.success("Updated Successfully")
+        Router.push(`/${username}`)
+        toast.success("Updated Successfully");
       })
-      .catch((e)=> {
+      .catch((e) => {
         //handle error
         console.log(e);
-        return toast.error("Something went wrong")
+        setisSaving(false)
+        return toast.error("Something went wrong");
       });
   };
 
@@ -218,7 +225,6 @@ export default function profile() {
                 onChange={(e) => setleetcodeId(e.target.value)}
                 className={styles.input}
                 placeholder="Ex. coder_450"
-                required
               />
             </div>
 
@@ -234,7 +240,6 @@ export default function profile() {
                 onChange={(e) => setgfgId(e.target.value)}
                 className={styles.input}
                 placeholder="Ex. coder_450"
-                required
               />
             </div>
 
@@ -250,8 +255,8 @@ export default function profile() {
                   <input
                     value={imagelinkValue}
                     onChange={toogleImageLink}
-                    placeholder="Paste image link or select"
-                    required
+                    placeholder="Paste valid link or select"
+                    // required
                   />
                   <div className={styles.selectIcon}>
                     <img
@@ -284,6 +289,7 @@ export default function profile() {
                   <img
                     onError={() => {
                       setimagelink("/icons/error.svg");
+                      setimagelinkValue("");
                       setImagePlatform(null);
                     }}
                     referrerpolicy="no-referrer"
@@ -295,7 +301,7 @@ export default function profile() {
             </div>
 
             <button type="button" className={styles.btn} type="submit">
-              Save
+              {!isSaving?"Save":"Loading"}
             </button>
           </form>
         </div>
