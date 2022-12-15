@@ -6,306 +6,131 @@ import { getCookie } from "cookies-next";
 import { baseurl } from "../../../public/baseurl";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
-import  Router  from "next/router";
+import Router from "next/router";
+
+const icons = {
+  twitter: "/icons/twitter.png",
+  linkedin: "/icons/linkedin.png",
+  facebook: "/icons/facebook.png",
+};
 
 export default function link() {
   const Token = getCookie("token");
-  const googleProfile = getCookie("googleProfile");
+
+  const [title, settitle] = useState("");
+  const [url, seturl] = useState("");
+  const [imagelink, setimagelink] = useState("");
+  const [validImage, setvalidImage] = useState(false);
 
   const [isSaving, setisSaving] = useState(false);
 
-  const [name, setname] = useState("");
-  const [username, setusername] = useState("");
-  const [title, settitle] = useState("");
-  const [bio, setbio] = useState("");
-  const [leetcodeId, setleetcodeId] = useState(null);
-  const [gfgId, setgfgId] = useState(null);
-  const [imagelink, setimagelink] = useState("/vercel.svg");
-  const [imagelinkValue, setimagelinkValue] = useState("");
-
-  const [ImagePlatform, setImagePlatform] = useState("");
-
-  const getProfileData = useQuery(
-    "userDate",
-    () =>
-      fetch(`${baseurl}/signin/getuser`, {
-        method: "POST",
-        headers: new Headers({
-          Authorization: "Bearer " + Token,
-          "Content-Type": "application/x-www-form-urlencoded",
-        }),
-      }).then((res) => res.json()),
-
-    {
-      enabled: false,
+  const toogleImage = (x) => {
+    settitle(x)
+    if (x.search(/twitter/) !== -1) {
+      setvalidImage(true);
+      setimagelink(icons["twitter"]);
+    } else if (x.search(/linkedin/) !== -1) {
+      setvalidImage(true);
+      setimagelink(icons["linkedin"]);
+    } else if (x.search(/facebook/) !== -1) {
+      setvalidImage(true);
+      setimagelink(icons["facebook"]);
+    }else{
+        setvalidImage(false)
     }
-  );
-
-  useEffect(() => {
-    getProfileData.refetch();
-    let data = getProfileData.data;
-    var x = data?.data;
-
-    if (x) {
-      setname(x.name);
-      setusername(x.username);
-      settitle(x.title);
-      setimagelink(x.profile);
-      setleetcodeId(x.websites?.leetcode);
-      setgfgId(x.websites?.gfg);
-      setimagelinkValue(x.profile);
-      setbio(x.bio);
-      getImagePlatform(x.profile);
-    }
-  }, [getProfileData.data]);
-
-  const getImagePlatform = (x) => {
-    console.log(x);
-    // ADDING PLATFORM BUTTON
-    if (x.search(/google/) !== -1) {
-      setImagePlatform("google");
-    } else if (x.search(/leetcode/) !== -1) {
-      setImagePlatform("leetcode");
-    } else if (x.search(/gfg/) !== -1) {
-      setImagePlatform("gfg");
-    } else {
-      setImagePlatform("");
-    }
-  };
-
-  const selectImgPlatform = (v) => {
-    if (v == "leetcode" && leetcodeId.length == 0)
-      return toast.error(`Please add ${v} Id`, { position: "top-center" });
-    if (v == "gfg" && leetcodeId.length == 0)
-      return toast.error(`Please add ${v} Id`, { position: "top-center" });
-
-    setImagePlatform(v);
-
-    if (v == "google") {
-      setimagelinkValue(googleProfile);
-      setimagelink(googleProfile);
-    }
-  };
-
-  const toogleImageLink = (e) => {
-    let value = e.target.value;
-    setimagelink(value);
-    setimagelinkValue(value);
-    getImagePlatform(value);
-    if (value.length == 0) {
-      selectImgPlatform("google");
-    }
-  };
-
-  const Save = async (e) => {
-    setisSaving(true)
-    e.preventDefault();
-    if (!leetcodeId && !gfgId)
-      return toast.error("Either Leetcode or GFG ID is required");
-
-    const body = {
-      username: username,
-      leetcode: leetcodeId,
-      gfg: gfgId,
-      name: name,
-      title: title,
-      bio: bio,
-      profile: imagelinkValue,
-    };
-    await axios({
-      method: "post",
-      url: `${baseurl}/update`,
-      data: body,
-      headers: {
-        Authorization: "Bearer " + Token,
-      },
-    })
-      .then(({ data }) => {
-        if(data.status != 200) return toast.error(data?.message)
-        console.log(data);
-        Router.push(`/${username}`)
-        toast.success("Updated Successfully");
-      })
-      .catch((e) => {
-        //handle error
-        console.log(e);
-        setisSaving(false)
-        return toast.error("Something went wrong");
-      });
   };
 
   return (
     <div className={styles.container}>
       <Header />
 
-      {getProfileData.isLoading ? (
-        <p>F</p>
-      ) : (
-        <div className={styles.Box}>
-          <p class="font-small text-2xl font-semibold text-center mt-0 mb-5 text-white-600">
-            My Profile
-          </p>
-          <form onSubmit={(e) => Save(e)}>
-            <div class="mb-6">
-              <label
-                for="email"
-                class="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
-              >
-                Enter your name
-              </label>
-              <input
-                type="name"
-                id="name"
-                value={name}
-                onChange={(e) => setname(e.target.value)}
-                className={styles.input}
-                style={{ textTransform: "uppercase" }}
-                placeholder="Enter your full name"
-                required
-              />
-            </div>
+      <div className={styles.Box}>
+        <p class="font-small text-2xl font-semibold text-center mt-0 mb-5 text-white-600">
+          Add Link
+        </p>
 
-            <div class="mb-6">
-              <label
-                for="email"
-                class="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
-              >
-                Username
-              </label>
-              <input
-                className={styles.input}
-                value={username}
-                onChange={(e) => setusername(e.target.value)}
-                placeholder="Ex. CODER_450"
-                required
-              />
-            </div>
+        <form onSubmit={(e) => Save(e)}>
+          <div class="mb-6">
+            <label
+              for="email"
+              class="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
+            >
+              Name
+            </label>
+            <input
+              type="name"
+              id="name"
+              value={title}
+              onChange={(e) => {toogleImage(e.target.value)}}
+              className={styles.input}
+              placeholder="Ex Twitter,linkedin or Resume etc"
+              required
+            />
+          </div>
 
-            <div class="mb-6">
-              <label
-                for="email"
-                class="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
-              >
-                Portfolio Title
-              </label>
-              <input
-                value={title}
-                onChange={(e) => settitle(e.target.value)}
-                className={styles.input}
-                placeholder="Ex. Software Engineer Intern"
-                required
-              />
-            </div>
+          <div class="mb-6">
+            <label
+              for="email"
+              class="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
+            >
+              URL
+            </label>
+            <input
+              value={url}
+              onChange={(e) => {seturl(e.target.value)}}
+              className={styles.input}
+              placeholder="Ex. www.linkedin/in/samjoe"
+            />
+          </div>
 
-            <div class="mb-6">
-              <label
-                for="email"
-                class="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
+          <div class="mb-6">
+            <label
+              for="email"
+              class="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
+            >
+              Logo
+            </label>
+            <div className={styles.imagelinkdiv}>
+              <div
+                style={{ width: !validImage && "100%" }}
+                className={styles.imageinput}
               >
-                Bio
-              </label>
-              <input
-                value={bio}
-                onChange={(e) => setbio(e.target.value)}
-                className={styles.input}
-                placeholder="Ex. GTBIT 2020-2024"
-                required
-              />
-            </div>
-
-            <div class="mb-6">
-              <label
-                for="email"
-                class="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
-              >
-                Leetcode ID
-              </label>
-              <input
-                value={leetcodeId}
-                onChange={(e) => setleetcodeId(e.target.value)}
-                className={styles.input}
-                placeholder="Ex. coder_450"
-              />
-            </div>
-
-            <div class="mb-6">
-              <label
-                for="email"
-                class="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
-              >
-                GFG ID
-              </label>
-              <input
-                value={gfgId}
-                onChange={(e) => setgfgId(e.target.value)}
-                className={styles.input}
-                placeholder="Ex. coder_450"
-              />
-            </div>
-
-            <div class="mb-6">
-              <label
-                for="email"
-                class="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
-              >
-                Profile Photo
-              </label>
-              <div className={styles.imagelinkdiv}>
-                <div className={styles.imageinput}>
-                  <input
-                    value={imagelinkValue}
-                    onChange={toogleImageLink}
-                    placeholder="Paste valid link or select"
-                    // required
-                  />
-                  <div className={styles.selectIcon}>
-                    <img
-                      onClick={() => selectImgPlatform("gfg")}
-                      style={{
-                        backgroundColor:
-                          ImagePlatform == "gfg" ? "white" : "transparent",
-                      }}
-                      src="/icons/gfg.png"
-                    />
-                    <img
-                      onClick={() => selectImgPlatform("leetcode")}
-                      style={{
-                        backgroundColor:
-                          ImagePlatform == "leetcode" ? "white" : "transparent",
-                      }}
-                      src="/icons/leetcode.png"
-                    />
-                    <img
-                      onClick={() => selectImgPlatform("google")}
-                      style={{
-                        backgroundColor:
-                          ImagePlatform == "google" ? "white" : "transparent",
-                      }}
-                      src="/icons/google.png"
-                    />
-                  </div>
-                </div>
+                <input
+                style={{width:"100%"}}
+                  value={imagelink}
+                  onChange={(e) => {setvalidImage(true),setimagelink(e.target.value)}}
+                  placeholder="Paste valid link"
+                  // required
+                />
+              </div>
+              {validImage && (
                 <div className={styles.profilepic}>
                   <img
-                    onError={() => {
-                      setimagelink("/icons/error.svg");
-                      setimagelinkValue("");
-                      setImagePlatform(null);
-                    }}
-                    referrerpolicy="no-referrer"
+                    onError={()=>{setimagelink(""),setvalidImage(false)}}
+                    // onLoad={()=>setvalidImage(true)}
+                    // referrerpolicy="no-referrer"
                     alt="pic"
                     src={imagelink}
                   />
                 </div>
-              </div>
+              )}
             </div>
+          </div>
 
-            <button type="button" className={styles.btn} type="submit">
-              {!isSaving?"Save":"Loading"}
-            </button>
-          </form>
-        </div>
-      )}
+          <button type="button" className={styles.btn} type="submit">
+            {true ? "Save" : "Loading"}
+          </button>
+        </form>
+        <button
+          onClick={() => {
+            Router.back();
+          }}
+          style={{ backgroundColor: "transparent", border: "1px solid white" }}
+          className={styles.btn}
+        >
+          Back
+        </button>
+      </div>
       <Toaster />
     </div>
   );
