@@ -9,17 +9,9 @@ import styles from "../styles/Links.module.css";
 export default function Links({ data, editable = false }) {
   const Token = getCookie("token");
 
-  let [linkData,setlinkData] = useState([]);
+  let [linkData,setlinkData] = useState(data?.user?.links);
   let [isDeleting,setisDeleting] = useState(null);
 
-
-  useEffect(()=>{
-    if(data?.user?.links){
-      setlinkData(data?.user?.links)
-
-    }
-  },[data?.user?.links])
-  var x = linkData
 
   
 
@@ -99,7 +91,7 @@ export default function Links({ data, editable = false }) {
         </a>
 
         {/* LinkedIN */}
-        {linkData.map((d) => (
+        {linkData && linkData.length > 0 && linkData.map((d) => (
           <a
           style={{transform:editable && "none"}}
           key={d?.id}

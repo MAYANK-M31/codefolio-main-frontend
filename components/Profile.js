@@ -9,12 +9,6 @@ var problemsSolved = {
 };
 
 export default function Profile({ data }) {
-  const [problemCount, setproblemCount] = useState(problemsSolved);
-  const [user, setuser] = useState(null);
-  const [globalrank, setglobalrank] = useState(0);
-  const [schoolrank, setschoolrank] = useState(0);
-  const [imagelink, setimagelink] = useState("/logo.svg");
-
   const gettotalSolved = (gfg, leetcode) => {
     return {
       total:
@@ -36,27 +30,21 @@ export default function Profile({ data }) {
     };
   };
 
-  useEffect(() => {
-console.log(data);
-    if (data && data?.status == 200) {
-      let totalSolved = gettotalSolved(
-        data?.gfg?.data?.submitStats,
-        data?.leetcode?.data?.matchedUser?.submitStats?.totalSubmissionNum
-      );
-      console.log(totalSolved);
-      setproblemCount(totalSolved);
-      setuser(data?.user);
-      setimagelink(data?.user.profile);
-      setschoolrank(data?.gfg?.data?.profile?.rank);
-      setglobalrank(data?.leetcode?.data?.matchedUser?.profile?.ranking);
-    }
-  }, [data]);
+  let totalSolved = gettotalSolved(
+    data?.gfg?.data?.submitStats,
+    data?.leetcode?.data?.matchedUser?.submitStats?.totalSubmissionNum
+  );
+
+  const problemCount = totalSolved;
+  const user = data?.user;
+  const globalrank = data?.leetcode?.data?.matchedUser?.profile?.ranking || 0;
+  const schoolrank = data?.gfg?.data?.profile?.rank || 0;
+  const [imagelink, setimagelink] = useState(data?.user.profile || "/logo.svg");
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  
   return (
     <div className={styles.profileDiv}>
       <div className={styles.profileLeft}>

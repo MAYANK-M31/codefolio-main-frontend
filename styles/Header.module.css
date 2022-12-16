@@ -86,6 +86,17 @@
     padding: 0.3rem 0.6rem;
     border-radius: 0.5rem;
     cursor: pointer;
+    position: relative;
+    transition: 0.2s ease-in-out 0s;
+  }
+
+  .userBtn:hover{
+    background-color: #4b4a4a9d;
+  }
+  .userBtn:active{
+    transform: scale(0.9);
+    background-color: #4b4a4a9d;
+
   }
 
   .userBtn img{
@@ -96,4 +107,15 @@
   .userBtn p{
     font-size: 0.9rem;
 
+  }
+
+  .dropdown{
+  width: 8.2rem;
+  left: 0rem;
+    position: absolute;
+    top: 2.5rem;
+    background-color: #1c1c1c;
+    padding: 0.5rem 0.6rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
   }

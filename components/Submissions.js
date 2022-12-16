@@ -3,54 +3,57 @@ import { useEffect, useState } from "react";
 import _ from "underscore";
 import styles from "../styles/Submission.module.css";
 const currentYear = [moment(Date.now(), "x").year()];
+
 export default function Submissions({ data }) {
-  const [years, setyears] = useState(currentYear);
-  const [calendarData, setcalendarData] = useState({});
-  const [totalSubmission, settotalSubmission] = useState(0);
 
-  const getActiveYears = (gfg = [], leetcode = []) => {
-    return _.union(gfg, leetcode).sort().reverse();
-  };
+  var totalSubmission = 0
+  var years  = [2022]
+  var calendarData = []
 
+
+   
   const getSubmissionCalendar = (gfg = {}, leetcode = {}) => {
     let submissioncount = 0;
     const convert = (x) => {
       var Temp = {};
       Object.keys(x).map(
-        (e) => (submissioncount += x[e],Temp[moment(e, "X").format("DD-MM-YYYY")] = x[e])
+        (e) => (
+          (submissioncount += x[e]),
+          (Temp[moment(e, "X").format("DD-MM-YYYY")] = x[e])
+        )
       );
 
       return Temp;
     };
     gfg = convert(gfg);
     leetcode = convert(leetcode);
-    settotalSubmission(submissioncount);
+    totalSubmission = submissioncount
     return { gfg, leetcode };
   };
 
-  useEffect(() => {
-    if (!data) return;
-
-    let ActiveYears = getActiveYears(
-      data?.gfg?.data?.userCalendar?.activeYears,
-      data?.leetcode?.data?.matchedUser?.userCalendar?.activeYears
-    );
-
-    let SubmissionCalendar = getSubmissionCalendar(
-      data?.gfg?.data?.userCalendar?.submissionCalendar,
-      JSON.parse(
-        data && data?.leetcode && data?.leetcode?.data?.matchedUser?.userCalendar?.submissionCalendar || "{}"
-      )
-    );
-
-    // UPDATE STATES
-    setcalendarData(SubmissionCalendar);
-    setyears(ActiveYears);
-  }, [data]);
-
-  const SetcountSubmission = (count) => {
-    settotalSubmission(count);
+  const getActiveYears = (gfg = [], leetcode = []) => {
+    return _.union(gfg, leetcode).sort().reverse();
   };
+
+
+  let ActiveYears = getActiveYears(
+    data?.gfg?.data?.userCalendar?.activeYears,
+    data?.leetcode?.data?.matchedUser?.userCalendar?.activeYears
+  );
+
+  let SubmissionCalendar = getSubmissionCalendar(
+    data?.gfg?.data?.userCalendar?.submissionCalendar,
+    JSON.parse(
+      (data &&
+        data?.leetcode &&
+        data?.leetcode?.data?.matchedUser?.userCalendar?.submissionCalendar) ||
+        "{}"
+    )
+  );
+
+
+  years  = ActiveYears
+  calendarData = SubmissionCalendar
 
   return (
     <div className={styles.submissionDiv}>
@@ -64,7 +67,7 @@ export default function Submissions({ data }) {
         </div>
       </div>
 
-      <HeatMap countSubmission={SetcountSubmission} data={calendarData} />
+      <HeatMap data={calendarData} />
     </div>
   );
 }

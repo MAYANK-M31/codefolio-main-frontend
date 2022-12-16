@@ -3,6 +3,8 @@ import Image from 'next/image'
 import NavBar from '../components/NavBar'
 import styles from '../styles/Home.module.css'
 import { Toaster } from 'react-hot-toast';
+import qs from "querystring";
+import { baseurl } from '../public/baseurl';
 
 
 export default function Home() {
@@ -73,4 +75,31 @@ export default function Home() {
       <Toaster/>
     </div>
   )
+}
+
+
+
+export async function getServerSideProps(context) {
+  const { username } = context.query;
+  const cookies = qs.decode(context.req.headers.cookie, "; ");
+  const Token = cookies?.token;
+
+
+  const {status,data} = await fetch(`${baseurl}/signin/verify`, {
+    method: "POST",
+    headers: new Headers({
+      Authorization: "Bearer " + Token,
+      "Content-Type": "application/x-www-form-urlencoded",
+    }),
+  }).then((res) => res.json());
+
+  if (status == 200) {
+    context.res.writeHead(302, {
+      Location: "/" + data?.username + "/dashboard",
+    });
+    context.res.end();
+  }
+
+
+  return { props: {  } }
 }

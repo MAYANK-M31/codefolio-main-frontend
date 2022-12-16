@@ -125,7 +125,7 @@ export default function profile() {
       .then(({ data }) => {
         if(data.status != 200) return toast.error(data?.message)
         console.log(data);
-        Router.push(`/${username}`)
+        Router.push(`/${username}/dashboard`)
         toast.success("Updated Successfully");
       })
       .catch((e) => {

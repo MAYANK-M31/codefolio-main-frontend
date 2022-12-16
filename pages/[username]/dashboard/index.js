@@ -7,34 +7,23 @@ import Profile from "../../../components/Profile";
 import Submissions from "../../../components/Submissions";
 import Links from "../../../components/Links";
 import HeaderMain from "../../../components/HeaderMain"
+import qs from "querystring"
 
-
-export default function profile() {
-  const [usernotfound, setusernotfound] = useState(false);
-
-  const router = useRouter();
-  const { username } = router.query;
-  const { isLoading, error, data } = useQuery(
-    "repoData",
-    () =>
-      fetch(`${baseurl}/profile?username=${username}`).then((res) =>
-        res.json()
-      ),
-    {
-      enabled: !!username,
-    }
-  );
-
-  if (error) return console.log(error);
+export default function profile({data}) {
+ 
+  const [isLoading, setisloading] = useState(false);
 
   useEffect(() => {
-    if (data && data?.status == 404) {
-      setusernotfound(true);
-    }
-  }, [isLoading]);
+    
+    setisloading(false);
+  }, []);
+  
+  if (isLoading) return <h1>Loading</h1>;
+  if (data?.status == 404) return <h1>USER NOT FOUND</h1>;
+  
   return (
     <div style={{ paddingInline: "0px" }} className={styles.container}>
-      <HeaderMain />
+      <HeaderMain username={data?.user?.username} />
       <div
         style={{ paddingInline: "5vw", marginTop: "3rem" }}
         className={styles.containerTop}
@@ -50,3 +39,34 @@ export default function profile() {
     </div>
   );
 }
+
+
+export async function getServerSideProps(context) {
+  const { username } = context.query;
+
+  const cookies = qs.decode(context.req.headers.cookie, "; ");
+  const Token = cookies?.token;
+
+
+  const userData = await fetch(`${baseurl}/signin/verify`, {
+    method: "POST",
+    headers: new Headers({
+      Authorization: "Bearer " + Token,
+      "Content-Type": "application/x-www-form-urlencoded",
+    }),
+  }).then((res) => res.json());
+
+  if (userData?.status != 200) {
+    context.res.writeHead(302, {
+      Location: "/",
+    });
+    context.res.end();
+  }
+
+  const data = await fetch(`${baseurl}/profile?username=${userData?.data?.username}`).then(
+    (res) => res.json()
+  );
+
+  return { props: { data } };
+}
+
