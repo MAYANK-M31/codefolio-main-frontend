@@ -10,8 +10,7 @@ export default function HeaderMain({ username }) {
     deleteCookie("token");
     deleteCookie("googleProfile")
     deleteCookie("username")
-    console.log(Router);
-    // Router.push(Router.basePath)
+    Router.push("/")
   }
   return (
     <div className={styles.Main}>
