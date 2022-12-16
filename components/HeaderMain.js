@@ -1,7 +1,9 @@
 import { deleteCookie } from "cookies-next";
 import  Router  from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../styles/Header.module.css";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import toast from "react-hot-toast";
 
 
 export default function HeaderMain({ username }) {
@@ -12,6 +14,13 @@ export default function HeaderMain({ username }) {
     deleteCookie("username")
     Router.push("/")
   }
+
+  const [link,setlink] = useState("")
+  
+  useEffect(()=>{
+    setlink(`${window.location.host}/${username}`)
+  },[])
+
   return (
     <div className={styles.Main}>
       <div className={styles.section}>
@@ -20,8 +29,8 @@ export default function HeaderMain({ username }) {
       <div className={styles.section}>
         <div className={styles.linkBar}>
           <img src="/icons/lock.svg" />
-          <p>codefolio.link/MAYANK-M31</p>
-          <img src="/icons/link.svg" />
+          <p>{link}</p>
+          <img className={styles.clip} onClick={()=>{navigator.clipboard.writeText(link),toast.success("Copied to clipboard")}} src="/icons/link.svg" />
         </div>
       </div>
       <div className={styles.section}>
@@ -30,7 +39,8 @@ export default function HeaderMain({ username }) {
             <img src="/icons/reload.svg" />
           </div>
           <div onClick={()=>setopen(x=>!x)} className={styles.userBtn}>
-            {username} <img src="/icons/angle-down.svg" />
+            {username} 
+            <img src="/icons/angle-down.svg" />
 
             {open &&
             <div className={styles.dropdown}>

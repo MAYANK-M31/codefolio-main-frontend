@@ -102,9 +102,12 @@ export default function profile() {
   const Save = async (e) => {
     setisSaving(true)
     e.preventDefault();
-    if (!leetcodeId && !gfgId)
+    if (!leetcodeId && !gfgId){
+      setisSaving(false)
       return toast.error("Either Leetcode or GFG ID is required");
 
+    }
+    
     const body = {
       username: username,
       leetcode: leetcodeId,
