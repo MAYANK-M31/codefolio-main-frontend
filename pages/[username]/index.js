@@ -18,7 +18,7 @@ export default function profile({ data }) {
     <div className={styles.container}>
       <Head>
         <title>CODEFOLIO</title>
-        <meta name="og:image" content={`https://codefolio-mayank-m31.vercel.app/icons/vercel.png`} />
+        <meta property="og:image" content={`https://codefolio-mayank-m31.vercel.app/icons/vercel.png`} />
 
         <meta name="description" content="Build Stunning code porfolio in bio" />
         <link rel="icon" href="/favicon.ico" />
