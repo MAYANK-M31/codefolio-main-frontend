@@ -45,7 +45,7 @@ export default function profile() {
               <Submissions data={data} />
             </div>
             <div className={styles.containerTopRight}>
-              <Links />
+              <Links data={data} />
             </div>
           </div>
           {/* <Projects /> */}
