@@ -9,12 +9,20 @@ import Links from "../../components/Links";
 import Projects from "../../components/Projects";
 import ExpandCard from "../../components/ExpandCard";
 import qs from "querystring";
+import Head from "next/head";
 
 export default function profile({ data }) {
   if (data?.status == 404) return <h1>USER NOT FOUND</h1>;
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>CODEFOLIO</title>
+        <meta name="og:image" content={`https://codefolio-7byq1zp7l-mayank-m31.vercel.app/logo.svg`} />
+
+        <meta name="description" content="Build Stunning code porfolio in bio" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className={styles.containerTop}>
         <div className={styles.containerTopLeft}>
           <Profile data={data} />
