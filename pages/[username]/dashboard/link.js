@@ -25,19 +25,53 @@ export default function link() {
   const [isSaving, setisSaving] = useState(false);
 
   const toogleImage = (x) => {
-    settitle(x)
-    if (x.search(/twitter/) !== -1) {
+      let t = x.toLowerCase()
+    settitle(t)
+    if (t.search(/twitter/) !== -1) {
       setvalidImage(true);
       setimagelink(icons["twitter"]);
-    } else if (x.search(/linkedin/) !== -1) {
+    } else if (t.search(/linkedin/) !== -1) {
       setvalidImage(true);
       setimagelink(icons["linkedin"]);
-    } else if (x.search(/facebook/) !== -1) {
+    } else if (t.search(/facebook/) !== -1) {
       setvalidImage(true);
       setimagelink(icons["facebook"]);
     }else{
         setvalidImage(false)
     }
+  };
+
+  const Save = async (e) => {
+    setisSaving(true)
+    e.preventDefault();
+
+
+    const body = {
+      title: title,
+      url: url,
+      logo: imagelink,
+    };
+
+    await axios({
+      method: "post",
+      url: `${baseurl}/update/newlink`,
+      data: body,
+      headers: {
+        Authorization: "Bearer " + Token,
+      },
+    })
+      .then(({ data }) => {
+        if(data.status != 200) return toast.error(data?.message),setisSaving(false)
+        console.log(data);
+        Router.back()
+        toast.success("ADDED Successfully");
+      })
+      .catch((e) => {
+        //handle error
+        console.log(e);
+        setisSaving(false)
+        return toast.error("Something went wrong");
+      });
   };
 
   return (
@@ -80,6 +114,7 @@ export default function link() {
               onChange={(e) => {seturl(e.target.value)}}
               className={styles.input}
               placeholder="Ex. www.linkedin/in/samjoe"
+              required
             />
           </div>
 
@@ -118,7 +153,7 @@ export default function link() {
           </div>
 
           <button type="button" className={styles.btn} type="submit">
-            {true ? "Save" : "Loading"}
+            {!isSaving ? "Add" : "Loading"}
           </button>
         </form>
         <button

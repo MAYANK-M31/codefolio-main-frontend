@@ -60,7 +60,7 @@ export default function profile() {
   }, [getProfileData.data]);
 
   const getImagePlatform = (x) => {
-    console.log(x);
+    
     // ADDING PLATFORM BUTTON
     if (x.search(/google/) !== -1) {
       setImagePlatform("google");
