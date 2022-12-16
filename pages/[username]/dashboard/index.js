@@ -42,28 +42,11 @@ export default function profile({data}) {
 
 
 export async function getServerSideProps(context) {
-  const { username } = context.query;
 
   const cookies = qs.decode(context.req.headers.cookie, "; ");
-  const Token = cookies?.token;
-
-
-  const userData = await fetch(`${baseurl}/signin/verify`, {
-    method: "POST",
-    headers: new Headers({
-      Authorization: "Bearer " + Token,
-      "Content-Type": "application/x-www-form-urlencoded",
-    }),
-  }).then((res) => res.json());
-
-  if (userData?.status != 200) {
-    context.res.writeHead(302, {
-      Location: "/",
-    });
-    context.res.end();
-  }
-
-  const data = await fetch(`${baseurl}/profile?username=${userData?.data?.username}`).then(
+  const username = cookies?.username
+ 
+  const data = await fetch(`${baseurl}/profile?username=${username}`).then(
     (res) => res.json()
   );
 

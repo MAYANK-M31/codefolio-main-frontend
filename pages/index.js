@@ -80,7 +80,6 @@ export default function Home() {
 
 
 export async function getServerSideProps(context) {
-  const { username } = context.query;
   const cookies = qs.decode(context.req.headers.cookie, "; ");
   const Token = cookies?.token;
 

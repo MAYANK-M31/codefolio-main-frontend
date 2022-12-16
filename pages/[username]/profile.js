@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import Header from "../../components/Header";
 import styles from "../../styles/myprofile.module.css";
-import { getCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 import { baseurl } from "../../public/baseurl";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
@@ -124,7 +124,7 @@ export default function profile() {
     })
       .then(({ data }) => {
         if(data.status != 200) return toast.error(data?.message)
-        console.log(data);
+        setCookie("username",username)
         Router.push(`/${username}/dashboard`)
         toast.success("Updated Successfully");
       })
