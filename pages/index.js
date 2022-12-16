@@ -15,7 +15,7 @@ export default function Home() {
       <NavBar/>
       <Head>
         <title>CODEFOLIO</title>
-        <meta name="og:image" content={`https://codefolio-7byq1zp7l-mayank-m31.vercel.app/vercel.png`} />
+        <meta name="og:image" content={`https://codefolio-7byq1zp7l-mayank-m31.vercel.app/icons/vercel.png`} />
 
         <meta name="description" content="Build Stunning code porfolio in bio" />
         <link rel="icon" href="/favicon.ico" />
