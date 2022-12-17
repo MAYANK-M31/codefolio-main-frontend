@@ -34,7 +34,7 @@ export default function HeaderMain({ username }) {
           <img
             className={styles.clip}
             onClick={() => {
-              navigator.clipboard.writeText(link),
+              navigator.clipboard.writeText("https://"+link),
                 toast.success("Copied to clipboard");
             }}
             src="/icons/link.svg"
