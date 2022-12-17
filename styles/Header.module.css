@@ -113,6 +113,7 @@
   padding: 0.5em 0.6em;
   border-radius: 0.5em;
   cursor: pointer;
+  font-size: 0.9em;
 }
 
 .clip:active {
@@ -152,13 +153,17 @@
     direction: rtl;
   }
 
-
-
   .userBtn p{
     max-width: 15vw;
     text-overflow: ellipsis;
     overflow: hidden; 
     white-space: nowrap;
     direction: rtl;
+  }
+
+  .dropdown{
+    width: fit-content;
+    font-size: 0.83em;
+    margin-top: 0.2em;
   }
 }

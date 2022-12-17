@@ -16,9 +16,9 @@
 }
 
 .btnYear {
-  width: 6.5rem;
-  height: 2.8rem;
-  border-radius: 0.9rem;
+  width: 6.5em;
+  height: 2.8em;
+  border-radius: 0.9em;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -32,7 +32,7 @@
   cursor: pointer;
   color: black;
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 1.2em;
 }
 
 .btnYear:hover {
@@ -44,4 +44,17 @@
 
 .btnYear:active {
   transform: scale(.9);
+}
+
+@media only screen and (max-width: 768px) {
+  .Main {
+    font-size: 1.7vw;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .Main {
+    font-size: 3.8vw;
+    padding-inline: 2.5vw;
+  }
 }

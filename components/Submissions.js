@@ -5,13 +5,10 @@ import styles from "../styles/Submission.module.css";
 const currentYear = [moment(Date.now(), "x").year()];
 
 export default function Submissions({ data }) {
+  var totalSubmission = 0;
+  var years = [2022];
+  var calendarData = [];
 
-  var totalSubmission = 0
-  var years  = [2022]
-  var calendarData = []
-
-
-   
   const getSubmissionCalendar = (gfg = {}, leetcode = {}) => {
     let submissioncount = 0;
     const convert = (x) => {
@@ -27,14 +24,13 @@ export default function Submissions({ data }) {
     };
     gfg = convert(gfg);
     leetcode = convert(leetcode);
-    totalSubmission = submissioncount
+    totalSubmission = submissioncount;
     return { gfg, leetcode };
   };
 
   const getActiveYears = (gfg = [], leetcode = []) => {
     return _.union(gfg, leetcode).sort().reverse();
   };
-
 
   let ActiveYears = getActiveYears(
     data?.gfg?.data?.userCalendar?.activeYears,
@@ -51,9 +47,8 @@ export default function Submissions({ data }) {
     )
   );
 
-
-  years  = ActiveYears
-  calendarData = SubmissionCalendar
+  years.push(ActiveYears);
+  calendarData = SubmissionCalendar;
 
   return (
     <div className={styles.submissionDiv}>
@@ -66,10 +61,9 @@ export default function Submissions({ data }) {
           <img src="/icons/angle-down.svg" />
         </div>
       </div>
-<div className={styles.HeatMapDiv}>
-<HeatMap data={calendarData} />
-
-</div>
+      <div className={styles.HeatMapDiv}>
+        <HeatMap data={calendarData} />
+      </div>
     </div>
   );
 }

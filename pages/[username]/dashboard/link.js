@@ -159,6 +159,7 @@ export default function link() {
         <button
           onClick={() => {
             Router.back();
+            toast.loading("Going Back Please Wait",{duration:1000})
           }}
           style={{ backgroundColor: "transparent", border: "1px solid white" }}
           className={styles.btn}

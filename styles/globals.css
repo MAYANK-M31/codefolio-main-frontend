@@ -34,20 +34,6 @@ a {
   box-sizing: border-box;
 }
 
-@media only screen and (max-width: 600px) {
-
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-}
-
 .ENDLOGO {
   width: 100%;
   display: flex;
@@ -63,11 +49,50 @@ a {
   height: auto;
 }
 
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 1.6vw;
+  }
+  .ENDLOGO{
+    margin-top: 2em;
+  }
+  .ENDLOGO img {
+    width: 30vw;
+    height: auto;
+  }
+ 
+}
+
+@media only screen and (max-width: 530px) {
+  html {
+    font-size: 3.1vw;
+    padding-bottom: 0;
+  }
+  .ENDLOGO{
+    margin-top: 1.5em;
+  }
+  .ENDLOGO img {
+    width: 60vw;
+    height: auto;
+  }
+  
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
+
 /* SCROLL STYLING */
 
 ::-webkit-scrollbar {
   width: 0px;
-  background-color:transparent;
+  background-color: transparent;
 }
 /* Track */
 ::-webkit-scrollbar-track {

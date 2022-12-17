@@ -1,25 +1,25 @@
 .container {
   width: 100%;
   padding-top: 3.4vw;
-  font-size: 1vw;
+  font-size: 0.9vw;
   padding-bottom: 3.4vw;
 }
 
 .Box {
-  width: 35vw;
-  border: 0.15rem #88888873 solid;
-  border-radius: 0.8rem;
-  padding: 2rem 2rem;
+  width: 37vw;
+  border: 0.15em #88888873 solid;
+  border-radius: 1.5em;
+  padding: 2em 2em;
   margin-inline: auto;
-  margin-top: 2rem;
+  margin-top: 2em;
 }
 
 .input {
   width: 100%;
-  border-radius: 0.6rem;
-  font-size: 1.5rem;
+  border-radius: 0.6em;
+  font-size: 1.5em;
   background-color: #1c1c1c !important;
-  padding: 0.5rem 0.8rem;
+  padding: 0.5em 0.8em;
 }
 
 .imagelinkdiv {
@@ -32,25 +32,25 @@
 }
 
 .imageinput {
-  width: calc(100% - 3.8rem);
-  border-radius: 0.6rem;
-  font-size: 1.5rem;
+  width: calc(88%);
+  border-radius: 0.6em;
+  font-size: 1.5em;
   background-color: #1c1c1c !important;
-  padding: 0.5rem 0.8rem;
+  padding: 0.5em 0.8em;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 .profilepic {
-  width: 2.9rem;
-  height: 2.9rem;
+  width: 2.9em;
+  height: 2.9em;
   border-radius: 100%;
   /* background-color: #2cbb5d; */
   border: 1px solid white;
-  box-shadow: 0rem 0rem 1rem -0.6rem white;
+  box-shadow: 0em 0em 1em -0.6em white;
 }
 
-.profilepic img{
+.profilepic img {
   width: 100%;
   height: 100%;
   border-radius: 100%;
@@ -78,13 +78,14 @@
 }
 
 .selectIcon img {
-  width: 2rem;
-  height: 2rem;
+  width: 1.7em;
+  height: 1.7em;
   border-radius: 100%;
   border: 1px solid white;
-  padding: 0.4rem;
+  padding: 0.4em;
   cursor: pointer;
   transition: 0.1s ease-in-out 0s;
+  margin-left: 0.5em;
 }
 
 .selectIcon img:hover {
@@ -92,25 +93,84 @@
 }
 
 .selectIcon img:active {
-    transform: scale(0.8);
-  }
+  transform: scale(0.8);
+}
 
 .btn {
   width: 100%;
-  border-radius: 0.6rem;
-  font-size: 1.5rem;
-  padding: 0.5rem 0.8rem;
+  border-radius: 0.6em;
+  font-size: 1.5em;
+  padding: 0.5em 0.8em;
   background-color: #2cbb5d;
   font-weight: 500;
-  margin-top: 1rem;
+  margin-top: 1em;
   transition: 0.2s ease-in-out 0s;
 }
 
 .btn:hover {
-  box-shadow: 0rem 0rem 2rem -0.6rem #2cbb5d;
+  box-shadow: 0em 0em 2em -0.6em #2cbb5d;
   transform: scale(1.01);
 }
 
 .btn:active {
   transform: scale(0.9);
+}
+
+@media only screen and (max-width: 768px) {
+
+  .container {
+    font-size: 1.5vw;
+    margin-top: 2em;
+  }
+  .Box {
+    width: 65%;
+  }
+  .profilepic{
+    width: 4em;
+    height: 4em;
+  }
+
+  .selectIcon{
+    width: 10em;
+  }
+
+  .selectIcon img{
+    width: 2em;
+    height: 2em;
+    margin-left: 0.3em;
+  }
+
+  .imageinput{
+    width: 88%;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .container {
+    margin-top: 3em;
+    font-size: 3vw;
+  }
+  .Box {
+    width: 95%;
+    border-radius: 1.5em;
+  }
+
+  .profilepic{
+    width: 3.5em;
+    height: 3.5em;
+  }
+
+  .selectIcon{
+    width: 7em;
+  }
+
+  .selectIcon img{
+    width: 1.6em;
+    height: 1.6em;
+    margin-left: 0.4em;
+  }
+
+  .imageinput{
+    width: 83%;
+  }
 }
