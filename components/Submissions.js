@@ -150,9 +150,7 @@ function HeatMap({ data }) {
                     className={styles.Point}
                   >
                     <div className={styles.tooltip}>
-                      <p style={{ color: "red" }}>
-                        {currDate},{totalsubmission}
-                      </p>
+                      {`${totalsubmission} submissions on ${currDate}`}
                     </div>
                     {/* <rect x="-3em" radius={10} y="-1em">
                       <title color="red" >Hello, World!</title>

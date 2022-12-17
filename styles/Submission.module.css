@@ -120,22 +120,23 @@
   transform: scale(1.2);
 }
 
-#tooltip {
-  background: cornsilk;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 5px;
-}
 
 .Point .tooltip {
-  width: 10em;
-  height: 1.5em;
-  border-radius: 0.4em;
-  background-color: white;
+  min-width: 16em;
+  height: 2.2em;
+  border-radius: 0.6em;
+  background-color: #e7e7e7;
   position: relative;
-  left: -4em;
+  left: -7em;
   top: -3em;
   visibility: hidden;
+  color: black;
+  font-size: 0.6em;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0.1em;
 }
 
 .Point:hover .tooltip {
