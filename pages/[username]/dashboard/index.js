@@ -21,22 +21,25 @@ export default function profile({ data }) {
   if (data?.status == 404) return <h1>USER NOT FOUND</h1>;
 
   return (
-    <div className={styles.container}>
+    <div>
       <HeaderMain username={data?.user?.username} />
-      <div className={styles.containerTop}>
-        <div className={styles.containerTopLeft}>
-          <Profile data={data} />
-          <TotalSolved data={data} />
-          <Submissions data={data} />
+
+      <div style={{marginTop:"5rem"}} className={styles.container}>
+        <div className={styles.containerTop}>
+          <div className={styles.containerTopLeft}>
+            <Profile data={data} />
+            <TotalSolved data={data} />
+            <Submissions data={data} />
+          </div>
+
+          <div className={styles.containerTopRight}>
+            <Links data={data} editable={true} />
+          </div>
         </div>
 
-        <div className={styles.containerTopRight}>
-          <Links data={data} editable={true} />
+        <div className={styles.BottomLinkDiv}>
+          <Links data={data} />
         </div>
-      </div>
-
-      <div className={styles.BottomLinkDiv}>
-        <Links data={data} />
       </div>
     </div>
   );
