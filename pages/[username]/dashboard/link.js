@@ -62,7 +62,7 @@ export default function link() {
     })
       .then(({ data }) => {
         if(data.status != 200) return toast.error(data?.message),setisSaving(false)
-        console.log(data);
+        // console.log(data);
         Router.back()
         toast.success("ADDED Successfully");
       })

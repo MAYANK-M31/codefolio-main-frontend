@@ -46,7 +46,7 @@ export default function profile() {
     let data = getProfileData.data;
     var x = data?.data;
 
-    console.log(data);
+    // console.log(data);
 
     if (x) {
       setname(x.name);

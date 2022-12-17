@@ -15,6 +15,12 @@ import TotalSolved from "../../components/TotalSolved";
 export default function profile({ data }) {
   if (data?.status == 404) return <h1>USER NOT FOUND</h1>;
 
+  const [link, setlink] = useState(`codefolio.link`);
+
+  useEffect(() => {
+    setlink(`https://${window.location.host}`);
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -49,9 +55,9 @@ export default function profile({ data }) {
       {/* <Projects /> */}
 
       {/* CODEFOLIO LAST BRANDING */}
-      <div className="ENDLOGO">
+      <a href={link} className="ENDLOGO">
         <img src="/icons/madewithlove.svg" />
-      </div>
+      </a>
     </div>
   );
 }

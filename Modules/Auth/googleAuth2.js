@@ -35,7 +35,7 @@ export default function GoogleAuth2() {
             if (data.status == 200) {
               setCookie("token", data.token);
               setCookie("googleProfile", data.profile);
-              console.log(data);
+              // console.log(data);
 
               setCookie("username", data?.data?.username);
               // IF NEW USER ONBOARD
@@ -50,7 +50,7 @@ export default function GoogleAuth2() {
               setisLoading(false);
               toast.error("Login Failed Try Again");
             }
-            console.log(token);
+            // console.log(token);
           });
         })
         .catch((e) => {

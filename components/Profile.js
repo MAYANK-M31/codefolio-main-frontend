@@ -32,7 +32,7 @@ export default function Profile({ data }) {
     data?.leetcode?.data?.matchedUser?.submitStats?.totalSubmissionNum
   );
 
-  console.log(totalSolved);
+  // console.log(totalSolved);
 
   const problemCount = totalSolved;
   const user = data?.user;
