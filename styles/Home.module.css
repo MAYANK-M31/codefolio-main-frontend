@@ -46,7 +46,6 @@
   flex-grow: 1;
 }
 
-
 .title,
 .getStartBtn {
   text-align: center;
@@ -80,9 +79,14 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 65vw;
   margin-top: 2em;
-  margin-right: 2em;
+  margin-left: -1.5em;
+
+}
+
+.grid img {
+  width: 65vw;
+  height: auto;
 }
 
 .footer {
@@ -111,28 +115,32 @@
     padding-top: 0em;
     font-size: 1.7vw;
   }
-  .title{
+  .title {
     font-size: 3.5em;
+  }
+  .grid img {
+    width: 75vw;
+    height: auto;
   }
 }
 
 @media only screen and (max-width: 530px) {
   .main {
     padding-top: 7em;
-    font-size: 2.6vw;
+    font-size: 2.4vw;
     justify-content: flex-start;
   }
-  .title{
+  .title {
     font-size: 4em;
     padding-inline: 0.2em;
   }
 
-  .getStartBtn{
+  .getStartBtn {
     font-size: 1.6em;
   }
 
-  .grid {
-    max-width: 95vw;
-    padding-right: 1.3em;
+  .grid img {
+    width: 95vw;
+    height: auto;
   }
 }

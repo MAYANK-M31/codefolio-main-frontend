@@ -28,7 +28,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          All <span className={styles.first}>Coding</span> Profile at{" "}
+          All <span className={styles.first}>Coding</span> Profiles at{" "}
           <span className={styles.second}>One Place</span>{" "}
         </h1>
         <h1 className={styles.title}>
@@ -37,7 +37,7 @@ export default function Home() {
 
         <GoogleAuth2 />
         <div className={styles.grid}>
-          <img src={"/example.png"} />
+          <img src={"/example.svg"} />
         </div>
       </main>
 
