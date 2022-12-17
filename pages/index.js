@@ -35,13 +35,13 @@ export default function Home() {
           in one <span className={styles.third}>Simple Link.</span>
         </h1>
 
-<GoogleAuth2/>
+        <GoogleAuth2 />
         <div className={styles.grid}>
           <img src={"/example.png"} />
         </div>
       </main>
 
-      <footer className={styles.footer}>
+      {/* <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
@@ -52,7 +52,7 @@ export default function Home() {
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
-      </footer>
+      </footer> */}
       <Toaster />
     </div>
   );

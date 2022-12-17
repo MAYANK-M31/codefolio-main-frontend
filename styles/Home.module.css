@@ -15,7 +15,7 @@
 .title {
   margin: 0;
   line-height: 1.4;
-  font-size: 4rem;
+  font-size: 4em;
   font-weight: 900;
 }
 
@@ -46,16 +46,6 @@
   flex-grow: 1;
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
 
 .title,
 .getStartBtn {
@@ -92,6 +82,7 @@
   flex-wrap: wrap;
   max-width: 65vw;
   margin-top: 2em;
+  margin-bottom: 100vh;
 }
 
 .footer {
@@ -112,5 +103,36 @@
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .main {
+    padding-top: 0em;
+    font-size: 1.7vw;
+  }
+  .title{
+    font-size: 3.5em;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .main {
+    padding-top: 7em;
+    font-size: 2.6vw;
+    justify-content: flex-start;
+  }
+  .title{
+    font-size: 4em;
+    padding-inline: 0.2em;
+  }
+
+  .getStartBtn{
+    font-size: 1.6em;
+  }
+
+  .grid {
+    max-width: 95vw;
+    padding-right: 1.3em;
   }
 }
