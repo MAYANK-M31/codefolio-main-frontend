@@ -8,6 +8,7 @@ import Submissions from "../../../components/Submissions";
 import Links from "../../../components/Links";
 import HeaderMain from "../../../components/HeaderMain"
 import qs from "querystring"
+import TotalSolved from "../../../components/TotalSolved";
 
 export default function profile({data}) {
  
@@ -30,6 +31,8 @@ export default function profile({data}) {
       >
         <div className={styles.containerTopLeft}>
           <Profile data={data} />
+          <TotalSolved data={data} />
+
           <Submissions data={data} />
         </div>
         <div className={styles.containerTopRight}>

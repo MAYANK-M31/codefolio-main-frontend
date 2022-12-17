@@ -125,12 +125,11 @@
 @media only screen and (max-width: 768px) {
   .LinksDiv{
     width: 100%;
-    font-size: 1.7vw;
-    padding-bottom: 10px;
+    font-size: 2vw;
+    padding-bottom: 4vw;
     height: fit-content;
     max-height: none;
     border-width: 0.1em;
-
   }
 }
 
@@ -138,10 +137,12 @@
   .LinksDiv{
     width: 100%;
     font-size: 3.9vw;
-    padding-bottom: 25px;
+    padding-bottom: 9vw;
     height: fit-content;
     max-height: none;
-    border-radius: 2.5vw;
+    border-radius: 3.5vw;
   }
+
+  
 }
 

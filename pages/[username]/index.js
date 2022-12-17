@@ -10,6 +10,7 @@ import Projects from "../../components/Projects";
 import ExpandCard from "../../components/ExpandCard";
 import qs from "querystring";
 import Head from "next/head";
+import TotalSolved from "../../components/TotalSolved";
 
 export default function profile({ data }) {
   if (data?.status == 404) return <h1>USER NOT FOUND</h1>;
@@ -29,10 +30,11 @@ export default function profile({ data }) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      
       <div className={styles.containerTop}>
         <div className={styles.containerTopLeft}>
           <Profile data={data} />
-
+          <TotalSolved data={data} />
           <Submissions data={data} />
         </div>
         <div className={styles.containerTopRight}>

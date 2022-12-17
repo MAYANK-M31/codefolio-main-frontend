@@ -21,11 +21,10 @@
 .profileDiv {
   width: 100%;
   height: 12vw;
-  border: 0.15rem #88888873 solid;
+  border: 0.15em #88888873 solid;
   border-radius: 0.8rem;
   display: flex;
   flex-direction: row;
-  /* overflow: hidden; */
   font-size: 1vw;
 }
 
@@ -164,6 +163,10 @@
   padding-inline: 3vw;
 }
 
+.TotalCountDiv{
+  display: none;
+}
+
 @media only screen and (max-width: 768px) {
   .containerTopLeft {
     width: 100vw;
@@ -240,11 +243,31 @@
     height: 20vw;
   }
 
-  .profileRight {
-    font-size: 1.4vw;
+  .TotalCountDiv{
+    display: flex;
+    width: 96%;
+    height: 7em;
+    font-size: 3vw;
+    border-radius: 2.5vw;
+    border: 0.15rem #88888873 solid;
+    margin-top: 1em;
+  }
+
+  .profileBottom {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .profileBottom .numbers{
+    font-size: 3vw;
   }
 
   .BottomLinkDiv {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
