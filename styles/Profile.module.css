@@ -216,6 +216,7 @@
   }
 
   .profileDiv {
+    width: 96%;
     height: 35vw;
     padding-inline: 2vw;
     font-size: 3vw;

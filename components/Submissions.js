@@ -66,8 +66,10 @@ export default function Submissions({ data }) {
           <img src="/icons/angle-down.svg" />
         </div>
       </div>
+<div className={styles.HeatMapDiv}>
+<HeatMap data={calendarData} />
 
-      <HeatMap data={calendarData} />
+</div>
     </div>
   );
 }
