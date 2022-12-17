@@ -1,65 +1,43 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import NavBar from '../components/NavBar'
-import styles from '../styles/Home.module.css'
-import { Toaster } from 'react-hot-toast';
+import Head from "next/head";
+import Image from "next/image";
+import NavBar from "../components/NavBar";
+import styles from "../styles/Home.module.css";
+import { Toaster } from "react-hot-toast";
 import qs from "querystring";
-import { baseurl } from '../public/baseurl';
-import { useEffect, useState } from 'react';
-
+import { baseurl } from "../public/baseurl";
+import { useEffect, useState } from "react";
+import GoogleAuth from "../Modules/Auth/googleAuth";
+import GoogleAuth2 from "../Modules/Auth/googleAuth2";
 
 export default function Home() {
-
   return (
     <div className={styles.container}>
-      <NavBar/>
+      <NavBar />
       <Head>
-      <title>CODEFOLIO:Link-In-Bio</title>
-        <meta property="og:image" content={`https://codefolio-mayank-m31.vercel.app/icons/vercel.png`} />
-        <meta name="description" content="Build Stunning code porfolio in bio" />
+        <title>CODEFOLIO:Link-In-Bio</title>
+        <meta
+          property="og:image"
+          content={`https://codefolio-mayank-m31.vercel.app/icons/vercel.png`}
+        />
+        <meta
+          name="description"
+          content="Build Stunning code porfolio in bio"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          All <span className={styles.first}>Coding</span> Profile at{" "}
+          <span className={styles.second}>One Place</span>{" "}
+        </h1>
+        <h1 className={styles.title}>
+          in one <span className={styles.third}>Simple Link.</span>
         </h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
+<GoogleAuth2/>
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          <img src={"/example.png"} />
         </div>
       </main>
 
@@ -69,25 +47,22 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
-      <Toaster/>
+      <Toaster />
     </div>
-  )
+  );
 }
-
-
 
 export async function getServerSideProps(context) {
   const cookies = qs.decode(context.req.headers.cookie, "; ");
   const Token = cookies?.token;
 
-
-  const {status,data} = await fetch(`${baseurl}/signin/verify`, {
+  const { status, data } = await fetch(`${baseurl}/signin/verify`, {
     method: "POST",
     headers: new Headers({
       Authorization: "Bearer " + Token,
@@ -102,6 +77,5 @@ export async function getServerSideProps(context) {
     context.res.end();
   }
 
-
-  return { props: {  } }
+  return { props: {} };
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../../styles/NavBar.module.css";
+import styles from "../../styles/Home.module.css";
 import Router from "next/router";
 
 import {
@@ -13,9 +13,8 @@ import { baseurl } from "../../public/baseurl";
 import { setCookie } from "cookies-next";
 import toast from "react-hot-toast";
 
-export default function GoogleAuth() {
+export default function GoogleAuth2() {
   const [isLoading, setisLoading] = useState(false);
-
 
   const googleSignIn = () => {
     setisLoading(true);
@@ -38,19 +37,18 @@ export default function GoogleAuth() {
               setCookie("googleProfile", data.profile);
               console.log(data);
 
-              setCookie("username",data?.data?.username)
+              setCookie("username", data?.data?.username);
               // IF NEW USER ONBOARD
-              if(data?.newuser){
+              if (data?.newuser) {
                 Router.push(`/${data?.data?.username}/profile`);
-              }else{
+              } else {
                 Router.push(`/${data?.data?.username}/dashboard`);
               }
-              toast.success("Loggedin successfully")
+              toast.success("Loggedin successfully");
               // setisLoading(false);
-              
             } else {
               setisLoading(false);
-              toast.error("Login Failed Try Again")
+              toast.error("Login Failed Try Again");
             }
             console.log(token);
           });
@@ -77,8 +75,8 @@ export default function GoogleAuth() {
   };
 
   return (
-    <div onClick={googleSignIn} className={styles.btnYear}>
-      {!isLoading ? <p>Login</p> : <p>Loading</p>}
-    </div>
+    <p onClick={googleSignIn} className={styles.getStartBtn}>
+      Get your Codefolio{" "}
+    </p>
   );
 }
