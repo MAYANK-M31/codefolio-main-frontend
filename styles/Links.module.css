@@ -55,6 +55,7 @@
   cursor: pointer;
   transition: 0.2s ease-in-out 0s;
   position: relative;
+  text-transform: capitalize;
 }
 
 .LinkBtn img {

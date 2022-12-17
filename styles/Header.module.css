@@ -10,8 +10,6 @@
   position: fixed;
   top: 0;
   background-color: black;
-
-  /* z-index: 10000; */
 }
 
 .Main img {
@@ -35,6 +33,7 @@
   width: 1em;
   height: 1em;
   cursor: pointer;
+  transition: 0.2s ease-in-out 0s;
 }
 
 .linkBar p {
@@ -102,6 +101,7 @@
 
 .userBtn p {
   font-size: 0.9em;
+  cursor: pointer;
 }
 
 .dropdown {
@@ -141,27 +141,27 @@
     height: 2em !important;
   }
 
-  .linkBar{
+  .linkBar {
     margin-right: -1em;
   }
 
-  .linkBar p{
+  .linkBar p {
     max-width: 32vw;
     text-overflow: ellipsis;
-    overflow: hidden; 
+    overflow: hidden;
     white-space: nowrap;
     direction: rtl;
   }
 
-  .userBtn p{
+  .userBtn p {
     max-width: 15vw;
     text-overflow: ellipsis;
-    overflow: hidden; 
+    overflow: hidden;
     white-space: nowrap;
     direction: rtl;
   }
 
-  .dropdown{
+  .dropdown {
     width: fit-content;
     font-size: 0.83em;
     margin-top: 0.2em;

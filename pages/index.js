@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import NavBar from "../components/NavBar";
 import styles from "../styles/Home.module.css";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import qs from "querystring";
 import { baseurl } from "../public/baseurl";
 import { useEffect, useState } from "react";
