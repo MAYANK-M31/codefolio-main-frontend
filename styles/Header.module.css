@@ -1,6 +1,6 @@
 .Main {
   width: 100%;
-  height: 4rem;
+  height: 4em;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -10,6 +10,7 @@
   position: fixed;
   top: 0;
   background-color: black;
+
   /* z-index: 10000; */
 }
 
@@ -26,19 +27,19 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  padding: 0.4rem 0.7rem;
-  border-radius: 0.7rem;
+  padding: 0.4em 0.7em;
+  border-radius: 0.7em;
 }
 
 .linkBar img {
-  width: 1rem;
-  height: 1rem;
+  width: 1em;
+  height: 1em;
   cursor: pointer;
 }
 
 .linkBar p {
-  margin-inline: 0.5rem;
-  font-size: 0.9rem;
+  margin-inline: 0.5em;
+  font-size: 0.9em;
 }
 
 .section {
@@ -60,9 +61,9 @@
 .refresh {
   border-radius: 100%;
   background-color: #1c1c1c;
-  padding: 0.6rem;
+  padding: 0.6em;
   border-radius: 100%;
-  margin-right: 1rem;
+  margin-right: 1em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,8 +71,8 @@
 }
 
 .refresh img {
-  width: 1rem;
-  height: 1rem;
+  width: 1em;
+  height: 1em;
 }
 
 .userBtn {
@@ -79,8 +80,8 @@
   flex-direction: row;
   align-items: center;
   background-color: #1c1c1c;
-  padding: 0.3rem 0.6rem;
-  border-radius: 0.5rem;
+  padding: 0.3em 0.6em;
+  border-radius: 0.5em;
   cursor: pointer;
   position: relative;
   transition: 0.2s ease-in-out 0s;
@@ -95,22 +96,22 @@
 }
 
 .userBtn img {
-  width: 1rem;
-  height: 1rem;
+  width: 1em;
+  height: 1em;
 }
 
 .userBtn p {
-  font-size: 0.9rem;
+  font-size: 0.9em;
 }
 
 .dropdown {
-  width: 8.2rem;
-  left: 0rem;
+  width: 8.2em;
+  left: 0em;
   position: absolute;
-  top: 2.5rem;
+  top: 2.5em;
   background-color: #1c1c1c;
-  padding: 0.5rem 0.6rem;
-  border-radius: 0.5rem;
+  padding: 0.5em 0.6em;
+  border-radius: 0.5em;
   cursor: pointer;
 }
 
@@ -120,7 +121,44 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .Main {
+    font-size: 1.7vw;
+  }
 }
 
 @media only screen and (max-width: 530px) {
+  .Main {
+    font-size: 3.6vw;
+    padding-inline: 2.5vw;
+  }
+  .section {
+    width: fit-content;
+  }
+  .logo {
+    content: url("/vercel.svg");
+    width: 2em !important;
+    height: 2em !important;
+  }
+
+  .linkBar{
+    margin-right: -1em;
+  }
+
+  .linkBar p{
+    max-width: 32vw;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap;
+    direction: rtl;
+  }
+
+
+
+  .userBtn p{
+    max-width: 15vw;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap;
+    direction: rtl;
+  }
 }

@@ -167,6 +167,11 @@
 }
 
 @media only screen and (max-width: 768px) {
+
+  .container {
+    padding-block: 6vw;
+  }
+
   .containerTopLeft {
     width: 100%;
   }
@@ -200,6 +205,11 @@
 }
 
 @media only screen and (max-width: 530px) {
+
+  .container {
+    padding-block: 15vw;
+  }
+
   .profileRight {
     display: none;
   }

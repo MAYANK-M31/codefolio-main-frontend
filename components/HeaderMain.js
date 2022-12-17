@@ -24,7 +24,7 @@ export default function HeaderMain({ username }) {
   return (
     <div className={styles.Main}>
       <div className={styles.section}>
-        <img src="/logo.svg" />
+        <img className={styles.logo} src="/logo.svg" />
       </div>
       <div className={styles.section}>
         <div className={styles.linkBar}>
@@ -39,7 +39,9 @@ export default function HeaderMain({ username }) {
             <img src="/icons/reload.svg" />
           </div>
           <div onClick={()=>setopen(x=>!x)} className={styles.userBtn}>
+            <p>
             {username} 
+            </p>
             <img src="/icons/angle-down.svg" />
 
             {open &&
