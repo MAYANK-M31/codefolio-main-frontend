@@ -4,17 +4,17 @@
   padding-bottom: 3vw;
 }
 
-.containerTop{
+.containerTop {
   /* width: 100vw; */
   display: flex;
   flex-direction: row;
 }
 
-.containerTopLeft{
+.containerTopLeft {
   width: 75vw;
 }
 
-.containerTopRight{
+.containerTopRight {
   width: 25vw;
 }
 
@@ -51,29 +51,25 @@
   width: 7rem;
   height: 7rem;
   border-radius: 100%;
-  box-shadow: 0rem 0rem 8rem -1.7rem white;
+  box-shadow: 0em 0em 8em -1.7em white;
 }
-
-
 
 .profileTextDiv {
   width: 100%;
   margin: auto;
   margin-left: 1.5rem;
-  font-size: 0.8vw;
   /* background-color: aqua; */
 }
 
 .profileTextDiv h1 {
-  font-size: 1.6rem;
+  font-size: 1.6em;
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: -0.3rem;
-
 }
 
 .profileTextDiv h2 {
-  font-size: 1rem;
+  font-size: 1em;
   text-transform: capitalize;
   padding: 0;
   margin: 0;
@@ -81,13 +77,13 @@
 }
 
 .profileTextDiv p {
-  font-size: 0.8rem;
+  font-size: 0.8em;
   color: white;
   font-weight: 500;
 }
 
 .profileTextDiv span {
-  font-size: 0.9rem;
+  font-size: 0.9em;
   color: #ffffff80;
   font-weight: 500;
 }
@@ -98,7 +94,7 @@
   font-size: 2vw;
 }
 
-.linksDiv img{
+.linksDiv img {
   width: 1rem;
   height: 1rem;
 }
@@ -120,7 +116,7 @@
   background-color: #ffffff10;
   box-shadow: 0px 0px 15px -5px white;
   transition: 0.2s ease-in-out 0s;
-  
+
   cursor: pointer;
 }
 
@@ -129,21 +125,22 @@
   height: auto;
 }
 
-.rank{
+.rank {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-right: 0.8rem;
+  margin-right: 0.8em;
+  font-size: 1vw;
 }
 
-.rank img{
+.rank img {
   margin-right: 0.4rem;
 }
 
-.rank p{
-  font-size: 0.8rem;
+.rank p {
+  font-size: 0.8em;
   text-align: center;
-  margin-top: 0.2rem;
+  margin-top: 0.2em;
 }
 
 .numbers {
@@ -152,14 +149,108 @@
 }
 
 .numbers h2 {
-  font-size: 1.5rem;
-  padding-bottom: 0.2rem;
+  font-size: 1.5em;
+  padding-bottom: 0.2em;
   font-weight: 600;
 }
 
 .numbers p {
-  font-size: 0.9rem;
+  font-size: 0.9em;
   color: #ffffff80;
 }
 
+.BottomLinkDiv {
+  display: none;
+}
 
+@media only screen and (max-width: 768px) {
+  .containerTopLeft {
+    width: 100vw;
+  }
+  .containerTopRight {
+    display: none;
+  }
+
+  .profileDiv {
+    height: 16vw;
+    padding-inline: 1rem;
+    font-size: 1.1vw;
+    border-radius: 1.2vw;
+  }
+
+  .rank {
+    font-size: 1.1vw;
+  }
+
+  .profileRight {
+    font-size: 1.4vw;
+  }
+
+  .profileimg {
+    width: 10vw;
+    height: 10vw;
+  }
+
+  .BottomLinkDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 103%;
+    margin-top: 10px;
+    padding: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .profileRight {
+    display: none;
+  }
+
+  .profileLeft {
+    width: 100%;
+  }
+
+  .profileTextDiv {
+    padding-left: 4vw;
+  }
+
+  .profileDiv {
+    height: 35vw;
+    padding-inline: 2vw;
+    font-size: 3vw;
+    border-radius: 2.5vw;
+  }
+
+  .rank {
+    font-size: 3vw;
+  }
+
+  .rank img {
+    width: 1em;
+    height: auto;
+  }
+
+  .rank p {
+    margin-left: 0.3em;
+  }
+
+  .profileimg {
+    width: 20vw;
+    height: 20vw;
+  }
+
+  .profileRight {
+    font-size: 1.4vw;
+  }
+
+  .BottomLinkDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 103%;
+    margin-top: 10px;
+    padding: 0 !important;
+  }
+}

@@ -17,10 +17,16 @@ export default function profile({ data }) {
   return (
     <div className={styles.container}>
       <Head>
-      <title>CODEFOLIO:Link-In-Bio</title>
-        <meta property="og:image" content={`https://codefolio-mayank-m31.vercel.app/icons/vercel.png`} />
+        <title>CODEFOLIO:Link-In-Bio</title>
+        <meta
+          property="og:image"
+          content={`https://codefolio-mayank-m31.vercel.app/icons/vercel.png`}
+        />
 
-        <meta name="description" content="Build Stunning code porfolio in bio" />
+        <meta
+          name="description"
+          content="Build Stunning code porfolio in bio"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.containerTop}>
@@ -32,6 +38,11 @@ export default function profile({ data }) {
           <Links data={data} />
         </div>
       </div>
+
+      <div className={styles.BottomLinkDiv}>
+        <Links data={data} />
+      </div>
+
       {/* <Projects /> */}
 
       {/* CODEFOLIO LAST BRANDING */}
@@ -49,5 +60,5 @@ export async function getServerSideProps(context) {
     (res) => res.json()
   );
 
-  return { props: { data} };
+  return { props: { data } };
 }

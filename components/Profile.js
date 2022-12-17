@@ -62,7 +62,7 @@ export default function Profile({ data }) {
           <div className={styles.linksDiv}>
             <div className={styles.rank}>
               <img
-                style={{ marginTop: "0.1rem" }}
+                style={{ marginTop: "0.1em" }}
                 src="/icons/globe.png"
                 alt="lc"
               />
