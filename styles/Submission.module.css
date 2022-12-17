@@ -60,7 +60,6 @@
 .btnYear img {
   width: 1.2em;
   height: auto;
-  rotate: -90deg;
 }
 
 .btnYear:hover {
