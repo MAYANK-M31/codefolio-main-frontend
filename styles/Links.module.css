@@ -4,8 +4,8 @@
   max-height: 27vw;
   border: 0.15em #88888873 solid;
   border-radius: 0.8em;
-  margin-left: 1em;
   padding-block: 1em;
+  margin-left: 1em;
 }
 
 .LinksDiv .NavBar {
@@ -130,6 +130,8 @@
     height: fit-content;
     max-height: none;
     border-width: 0.1em;
+    margin-top: 0.8em;
+    margin-left: 0;
   }
 }
 
@@ -140,7 +142,10 @@
     padding-bottom: 9vw;
     height: fit-content;
     max-height: none;
+    margin-left: 0em;
     border-radius: 3.5vw;
+    /* margin-top: 3em; */
+
   }
 
   

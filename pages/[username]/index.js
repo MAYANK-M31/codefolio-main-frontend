@@ -30,7 +30,7 @@ export default function profile({ data }) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
+
       <div className={styles.containerTop}>
         <div className={styles.containerTopLeft}>
           <Profile data={data} />
@@ -41,10 +41,10 @@ export default function profile({ data }) {
           <Links data={data} />
         </div>
       </div>
-
-      <div className={styles.BottomLinkDiv}>
-        <Links data={data} />
-      </div>
+  
+        <div className={styles.BottomLinkDiv}>
+          <Links data={data} />
+        </div>
 
       {/* <Projects /> */}
 
