@@ -36,6 +36,9 @@ export default function profile({data}) {
           <Links data={data} editable={true} />
         </div>
       </div>
+      <div className={styles.BottomLinkDiv}>
+        <Links data={data} />
+      </div>
     </div>
   );
 }

@@ -32,6 +32,7 @@ export default function profile({ data }) {
       <div className={styles.containerTop}>
         <div className={styles.containerTopLeft}>
           <Profile data={data} />
+
           <Submissions data={data} />
         </div>
         <div className={styles.containerTopRight}>

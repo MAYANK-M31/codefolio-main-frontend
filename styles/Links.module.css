@@ -125,7 +125,6 @@
 @media only screen and (max-width: 768px) {
   .LinksDiv{
     width: 100%;
-    margin-left: 0;
     font-size: 1.7vw;
     padding-bottom: 10px;
     height: fit-content;
@@ -137,8 +136,7 @@
 
 @media only screen and (max-width: 530px) {
   .LinksDiv{
-    width: 96vw;
-    margin-left: 0;
+    width: 100%;
     font-size: 3.9vw;
     padding-bottom: 25px;
     height: fit-content;
