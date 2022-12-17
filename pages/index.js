@@ -37,7 +37,7 @@ export default function Home() {
 
         <GoogleAuth2 />
         <div className={styles.grid}>
-          <img src={"/example.svg"} />
+          <img src={"/example.png"} />
         </div>
       </main>
 
