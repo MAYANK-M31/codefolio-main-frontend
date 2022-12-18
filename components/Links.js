@@ -48,6 +48,7 @@ export default function Links({ data, editable = false }) {
           <h1>Links</h1>
           {editable && (
             <img
+            id="addlink"
               onClick={() => {
                 Router.push(Router.asPath + "/link");
               }}

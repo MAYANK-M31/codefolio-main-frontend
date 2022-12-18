@@ -9,32 +9,31 @@ import Links from "../../../components/Links";
 import HeaderMain from "../../../components/HeaderMain";
 import qs from "querystring";
 import TotalSolved from "../../../components/TotalSolved";
-import Joyride from 'react-joyride';
+import Joyride from "react-joyride";
 
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic";
+import { getCookie, setCookie } from "cookies-next";
 
-const JoyRideNoSSR = dynamic(
-  () => import('react-joyride'),
-  { ssr: false }
-)
+const JoyRideNoSSR = dynamic(() => import("react-joyride"), { ssr: false });
 
 const steps = [
   {
     target: ".Header_linkBar__SzFjN",
-    content: "Public codefolio link. Copy From Here",
+    content: "PUBLIC CODEFOLIO LINK!! COPY FROM HERE.",
   },
   {
     target: ".Header_userBtn__WHdlu",
-    content: "Edit your Profile From Here",
+    content: "EDIT YOUR PROFILE FROM HERE.",
   },
   {
-    target: ".Links_headingdiv__usDX2 img",
-    content: "Add New Links using this Button",
-  }
+    target: "#addlink",
+    content: "ADD NEW LINK USING THIS BUTTON.",
+  },
 ];
 
 export default function profile({ data }) {
   const [isLoading, setisloading] = useState(false);
+  const tour = getCookie("tour") && true;
 
   useEffect(() => {
     setisloading(false);
@@ -47,24 +46,30 @@ export default function profile({ data }) {
     <div>
       <HeaderMain username={data?.user?.username} />
       <JoyRideNoSSR
-      run={false}
-       steps={steps} 
-       styles={{
-        options: {
-          arrowColor: '#e3ffeb',
-          backgroundColor: 'white',
-          overlayColor: 'rgba(255, 255, 255, 0.3)',
-          primaryColor: '#27C937',
-          textColor: '#004a14',
-          width: "fit-content",
-        }
-      }}
-      showSkipButton={true}
-      disableCloseOnEsc={true}
-      continuous={true}
-      nonce={true}
-      showProgress={true}
-      hideCloseButton={true}
+        run={tour}
+        steps={steps}
+        styles={{
+          options: {
+            arrowColor: "#e3ffeb",
+            backgroundColor: "white",
+            overlayColor: "rgba(0, 0, 0, 0.8)",
+            primaryColor: "#27C937",
+            textColor: "#004a14",
+            width: "fit-content",
+          },
+        }}
+        showSkipButton={true}
+        disableCloseOnEsc={true}
+        continuous={true}
+        nonce={true}
+        showProgress={true}
+        hideCloseButton={true}
+        callback={(e) => {
+          e.action == "reset" &&
+            setCookie("tour", false, {
+              maxAge: Date.now() + 2 * 10 * 365 * 24 * 60 * 60,
+            });
+        }}
       />
       <div style={{ marginTop: "5rem" }} className={styles.container}>
         <div className={styles.containerTop}>
