@@ -60,8 +60,6 @@ export default function profile({ data }) {
         }}
         scrollToFirstStep={true}
         spotlightClicks={true}
-        
-
         showSkipButton={true}
         disableCloseOnEsc={true}
         continuous={true}
