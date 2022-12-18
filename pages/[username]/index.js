@@ -12,6 +12,7 @@ import qs from "querystring";
 import Head from "next/head";
 import TotalSolved from "../../components/TotalSolved";
 
+
 export default function profile({ data }) {
   if (data?.status == 404) return <h1>USER NOT FOUND</h1>;
 
