@@ -58,6 +58,10 @@ export default function profile({ data }) {
             width: "fit-content",
           },
         }}
+        scrollToFirstStep={true}
+        spotlightClicks={true}
+        
+
         showSkipButton={true}
         disableCloseOnEsc={true}
         continuous={true}
