@@ -34,11 +34,11 @@ export default function GoogleAuth() {
             }).then((res) => res.json());
             // console.log(data);
             if (data.status == 200) {
-              setCookie("token", data.token);
-              setCookie("googleProfile", data.profile);
+              setCookie("token", data.token,{maxAge:86400});
+              setCookie("googleProfile", data.profile,{maxAge:86400});
               // console.log(data);
 
-              setCookie("username",data?.data?.username)
+              setCookie("username",data?.data?.username,{maxAge:86400})
               // IF NEW USER ONBOARD
               if(data?.newuser){
                 Router.push(`/${data?.data?.username}/profile`);

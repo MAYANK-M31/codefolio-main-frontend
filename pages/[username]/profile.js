@@ -138,7 +138,7 @@ export default function profile() {
     })
       .then(({ data }) => {
         if (data.status != 200) return toast.error(data?.message);
-        setCookie("username", username);
+        setCookie("username", username,{maxAge:86400});
         Router.push(`/${username}/dashboard`);
         toast.success("Updated Successfully");
       })

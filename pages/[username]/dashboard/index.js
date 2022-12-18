@@ -9,6 +9,29 @@ import Links from "../../../components/Links";
 import HeaderMain from "../../../components/HeaderMain";
 import qs from "querystring";
 import TotalSolved from "../../../components/TotalSolved";
+import Joyride from 'react-joyride';
+
+import dynamic from 'next/dynamic'
+
+const JoyRideNoSSR = dynamic(
+  () => import('react-joyride'),
+  { ssr: false }
+)
+
+const steps = [
+  {
+    target: ".Header_linkBar__SzFjN",
+    content: "Public codefolio link. Copy From Here",
+  },
+  {
+    target: ".Header_userBtn__WHdlu",
+    content: "Edit your Profile From Here",
+  },
+  {
+    target: ".Links_headingdiv__usDX2 img",
+    content: "Add New Links using this Button",
+  }
+];
 
 export default function profile({ data }) {
   const [isLoading, setisloading] = useState(false);
@@ -23,8 +46,27 @@ export default function profile({ data }) {
   return (
     <div>
       <HeaderMain username={data?.user?.username} />
-
-      <div style={{marginTop:"5rem"}} className={styles.container}>
+      <JoyRideNoSSR
+      run={false}
+       steps={steps} 
+       styles={{
+        options: {
+          arrowColor: '#e3ffeb',
+          backgroundColor: 'white',
+          overlayColor: 'rgba(255, 255, 255, 0.3)',
+          primaryColor: '#27C937',
+          textColor: '#004a14',
+          width: "fit-content",
+        }
+      }}
+      showSkipButton={true}
+      disableCloseOnEsc={true}
+      continuous={true}
+      nonce={true}
+      showProgress={true}
+      hideCloseButton={true}
+      />
+      <div style={{ marginTop: "5rem" }} className={styles.container}>
         <div className={styles.containerTop}>
           <div className={styles.containerTopLeft}>
             <Profile data={data} />

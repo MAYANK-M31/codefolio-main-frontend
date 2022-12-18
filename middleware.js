@@ -16,7 +16,7 @@ export async function middleware(req) {
     return NextResponse.redirect(new URL("/",req.nextUrl))
   }else{
       const response =  NextResponse.next()
-      response.cookies.set("username",data?.username)
+      response.cookies.set("username",data?.username,{maxAge:86400})
       return response
   }
 }
