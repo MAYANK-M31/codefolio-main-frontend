@@ -111,7 +111,7 @@ export default function Links({ data, editable = false }) {
               href={d?.url}
               className={styles.LinkBtn}
             >
-              <img src={d?.logo} />
+              <img style={{display: !d?.logo ? "none":null}} src={d?.logo} />
               <h3>{d?.title}</h3>
               {editable && (
                 <img

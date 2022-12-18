@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, CSSProperties } from "react";
 import { useQuery } from "react-query";
 import Header from "../../components/Header";
 import styles from "../../styles/myprofile.module.css";
@@ -6,11 +6,21 @@ import { getCookie, setCookie } from "cookies-next";
 import { baseurl } from "../../public/baseurl";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
-import  Router  from "next/router";
+import Router, { useRouter } from "next/router";
+import Loader from "react-spinners/PacmanLoader";
+
+const override = {
+  margin: "40vh auto",
+  borderColor: "white",
+  display: "flex",
+  justifyContent: "center",
+};
 
 export default function profile() {
   const Token = getCookie("token");
   const googleProfile = getCookie("googleProfile");
+  const router = useRouter();
+  let canGoBack = router?.query?.canGoBack;
 
   const [isSaving, setisSaving] = useState(false);
 
@@ -62,7 +72,6 @@ export default function profile() {
   }, [getProfileData.data]);
 
   const getImagePlatform = (x) => {
-    
     // ADDING PLATFORM BUTTON
     if (x.search(/google/) !== -1) {
       setImagePlatform("google");
@@ -102,14 +111,14 @@ export default function profile() {
   const Save = async (e) => {
     e.preventDefault();
 
-    setisSaving(true)
+    setisSaving(true);
 
     // if (!leetcodeId && !gfgId){
     //   setisSaving(false)
     //   return toast.error("Either Leetcode or GFG ID is required");
 
     // }
-    
+
     const body = {
       username: username,
       leetcode: leetcodeId,
@@ -128,15 +137,15 @@ export default function profile() {
       },
     })
       .then(({ data }) => {
-        if(data.status != 200) return toast.error(data?.message)
-        setCookie("username",username)
-        Router.push(`/${username}/dashboard`)
+        if (data.status != 200) return toast.error(data?.message);
+        setCookie("username", username);
+        Router.push(`/${username}/dashboard`);
         toast.success("Updated Successfully");
       })
       .catch((e) => {
         //handle error
         console.log(e);
-        setisSaving(false)
+        setisSaving(false);
         return toast.error("Something went wrong");
       });
   };
@@ -146,7 +155,14 @@ export default function profile() {
       <Header />
 
       {getProfileData.isLoading ? (
-        <p>F</p>
+        <Loader
+          color={"#ffffff"}
+          loading={true}
+          cssOverride={override}
+          size={35}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
       ) : (
         <div className={styles.Box}>
           <p class="font-small text-2xl font-semibold text-center mt-0 mb-5 text-white-600">
@@ -308,9 +324,23 @@ export default function profile() {
             </div>
 
             <button type="button" className={styles.btn} type="submit">
-              {!isSaving?"Save":"Loading"}
+              {!isSaving ? "Save" : "Loading Please wait"}
             </button>
           </form>
+          <button
+              onClick={() => {
+                Router.back();
+                toast.loading("Going Back Please Wait", { duration: 5000 });
+              }}
+              style={{
+                backgroundColor: "transparent",
+                border: "1px solid white",
+                display: canGoBack == "true" ? null : "none",
+              }}
+              className={styles.btn}
+            >
+              Back
+            </button>
         </div>
       )}
       <Toaster />

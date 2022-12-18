@@ -54,7 +54,7 @@ export default function HeaderMain({ username }) {
               <div className={styles.dropdown}>
                 <div
                   onClick={() =>
-                    Router.push(Router.basePath + "/" + username + "/profile")
+                    Router.push(Router.basePath + "/" + username + "/profile"+"?canGoBack=true")
                   }
                   className={styles.userBtn}
                 >
