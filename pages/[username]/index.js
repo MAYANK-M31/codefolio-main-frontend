@@ -1,7 +1,7 @@
 import react, { useEffect, useState } from "react";
 import Router from "next/router";
 import { useQuery, prefetchQuery } from "react-query";
-import { cdnurl } from "../../public/url";
+import { baseurl, cdnurl } from "../../public/url";
 import styles from "../../styles/Profile.module.css";
 import Profile from "../../components/Profile";
 import Submissions from "../../components/Submissions";
@@ -66,9 +66,22 @@ export default function profile({ data }) {
 export async function getServerSideProps(context) {
   const { username } = context.query;
 
-  const data = await fetch(`${cdnurl}?username=${username}`).then(
+
+
+  const data =  fetch(`${cdnurl}?username=${username}`).then(
+    (res) => res.json()
+  );
+  
+  const onlyUserdata =  fetch(`${baseurl}/profile?username=${username}&onlyuserdata=true`).then(
     (res) => res.json()
   );
 
-  return { props: { data } };
+  return Promise.all([onlyUserdata,data]).then((res)=>{
+    var resData = {user:null,gfg:null,leetcode:null,status:200}
+    resData.user = res[0]?.user
+    resData.gfg = res[1]?.gfg
+    resData.leetcode = res[1]?.leetcode
+    return { props: { data:resData } }
+  })
+
 }
