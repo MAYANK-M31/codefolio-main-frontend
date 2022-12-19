@@ -11,7 +11,7 @@ import {
 import { auth } from "../Firebase/firebase";
 import { baseurl } from "../../public/url";
 import { setCookie } from "cookies-next";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function GoogleAuth2() {
   const [isLoading, setisLoading] = useState(false);
@@ -31,12 +31,13 @@ export default function GoogleAuth2() {
                 "Content-Type": "application/x-www-form-urlencoded",
               }),
             }).then((res) => res.json());
-            toast.loading("PLEASE WAIT REDIRECTING",{duration:4000})
             // console.log(data);
             if (data.status == 200) {
-              setCookie("token", data.token,{maxAge:86400});
-              setCookie("googleProfile", data.profile,{maxAge:86400});
-              setCookie("username", data?.data?.username,{maxAge:86400});
+              toast.loading("PLEASE WAIT REDIRECTING", { duration: 4000 });
+
+              setCookie("token", data.token, { maxAge: 86400 });
+              setCookie("googleProfile", data.profile, { maxAge: 86400 });
+              setCookie("username", data?.data?.username, { maxAge: 86400 });
               // IF NEW USER ONBOARD
               if (data?.newuser) {
                 Router.push(`/${data?.data?.username}/profile`);
@@ -47,7 +48,7 @@ export default function GoogleAuth2() {
               // setisLoading(false);
             } else {
               setisLoading(false);
-              toast.error("Login Failed Try Again");
+              toast.error("Please Login Again");
             }
             // console.log(token);
           });
@@ -55,10 +56,12 @@ export default function GoogleAuth2() {
         .catch((e) => {
           console.log(e);
           setisLoading(false);
+          toast.error("Please Login Again");
         });
     } catch (error) {
       console.error(error);
       setisLoading(false);
+      toast.error("Please Login Again");
     }
   };
 
@@ -74,8 +77,8 @@ export default function GoogleAuth2() {
   };
 
   return (
-    <p onClick={googleSignIn} className={styles.getStartBtn}>
-      Get your Codefolio{" "}
+    <p onClick={()=>googleSignIn()} className={styles.getStartBtn}>
+      {!isLoading ? "Get your Codefolio" : "Loading"}
     </p>
   );
 }

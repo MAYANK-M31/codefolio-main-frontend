@@ -16,7 +16,6 @@ import toast from "react-hot-toast";
 export default function GoogleAuth() {
   const [isLoading, setisLoading] = useState(false);
 
-
   const googleSignIn = () => {
     setisLoading(true);
     try {
@@ -33,26 +32,23 @@ export default function GoogleAuth() {
               }),
             }).then((res) => res.json());
             // console.log(data);
-            toast.loading("PLEASE WAIT REDIRECTING",{duration:6000})
-
             if (data.status == 200) {
-              setCookie("token", data.token,{maxAge:86400});
-              setCookie("googleProfile", data.profile,{maxAge:86400});
-              // console.log(data);
+              toast.loading("PLEASE WAIT REDIRECTING", { duration: 4000 });
 
-              setCookie("username",data?.data?.username,{maxAge:86400})
+              setCookie("token", data.token, { maxAge: 86400 });
+              setCookie("googleProfile", data.profile, { maxAge: 86400 });
+              setCookie("username", data?.data?.username, { maxAge: 86400 });
               // IF NEW USER ONBOARD
-              if(data?.newuser){
+              if (data?.newuser) {
                 Router.push(`/${data?.data?.username}/profile`);
-              }else{
+              } else {
                 Router.push(`/${data?.data?.username}/dashboard`);
               }
-              toast.success("Loggedin successfully")
+              toast.success("Loggedin successfully");
               // setisLoading(false);
-              
             } else {
               setisLoading(false);
-              toast.error("Login Failed Try Again")
+              toast.error("Please Login Again");
             }
             // console.log(token);
           });
@@ -60,17 +56,19 @@ export default function GoogleAuth() {
         .catch((e) => {
           console.log(e);
           setisLoading(false);
+          toast.error("Please Login Again");
         });
     } catch (error) {
       console.error(error);
       setisLoading(false);
+      toast.error("Please Login Again");
     }
   };
 
   const googleSignOut = () => {
     try {
       signOut(auth).then((res) => {
-        // console.log(res);
+        console.log(res);
         alert("Sign Out");
       });
     } catch (error) {
