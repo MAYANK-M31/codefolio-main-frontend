@@ -165,6 +165,32 @@
   display: none;
 }
 
+.loadContainer{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.loadContainer p{
+  font-weight: 600;
+  margin-top: 1em;
+  font-size: 1em;
+}
+
+.loadContainer p span{
+  color: #5bd28c;
+}
+
+
+.emoji{
+  font-size: 1.5em;
+}
+
+
+
 @media only screen and (max-width: 768px) {
   .container {
     padding-block: 3vw;
@@ -199,6 +225,12 @@
 
   .BottomLinkDiv {
     display: contents;
+  }
+
+  .loadContainer p{
+    font-size: 2em;
+    margin-top: 0.5em;
+
   }
 }
 
@@ -262,5 +294,10 @@
 
   .profileBottom .numbers {
     font-size: 3vw;
+  }
+
+  .loadContainer p{
+    font-size: 4em;
+    margin-top: 0.2em;
   }
 }

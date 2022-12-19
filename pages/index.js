@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 import styles from "../styles/Home.module.css";
 import toast, { Toaster } from "react-hot-toast";
 import qs from "querystring";
-import { baseurl } from "../public/baseurl";
+import { baseurl } from "../public/url";
 import { useEffect, useState } from "react";
 import GoogleAuth from "../Modules/Auth/googleAuth";
 import GoogleAuth2 from "../Modules/Auth/googleAuth2";

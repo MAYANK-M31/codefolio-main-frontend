@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 import Header from "../../../components/Header";
 import styles from "../../../styles/myprofile.module.css";
 import { getCookie } from "cookies-next";
-import { baseurl } from "../../../public/baseurl";
+import { baseurl } from "../../../public/url";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import Router from "next/router";

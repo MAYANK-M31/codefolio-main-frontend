@@ -3,7 +3,7 @@ import { getCookie } from "cookies-next";
 import Router from "next/router";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { baseurl } from "../public/baseurl";
+import { baseurl } from "../public/url";
 import styles from "../styles/Links.module.css";
 
 export default function Links({ data, editable = false }) {

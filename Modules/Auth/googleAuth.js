@@ -9,7 +9,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from "../Firebase/firebase";
-import { baseurl } from "../../public/baseurl";
+import { baseurl } from "../../public/url";
 import { setCookie } from "cookies-next";
 import toast from "react-hot-toast";
 
@@ -33,6 +33,8 @@ export default function GoogleAuth() {
               }),
             }).then((res) => res.json());
             // console.log(data);
+            toast.loading("PLEASE WAIT REDIRECTING",{duration:6000})
+
             if (data.status == 200) {
               setCookie("token", data.token,{maxAge:86400});
               setCookie("googleProfile", data.profile,{maxAge:86400});

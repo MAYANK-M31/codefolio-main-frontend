@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 import Header from "../../components/Header";
 import styles from "../../styles/myprofile.module.css";
 import { getCookie, setCookie } from "cookies-next";
-import { baseurl } from "../../public/baseurl";
+import { baseurl } from "../../public/url";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import Router, { useRouter } from "next/router";
@@ -330,7 +330,7 @@ export default function profile() {
           <button
               onClick={() => {
                 Router.back();
-                toast.loading("Going Back Please Wait", { duration: 5000 });
+                toast.loading("Going Back Please Wait", { duration: 1500 });
               }}
               style={{
                 backgroundColor: "transparent",

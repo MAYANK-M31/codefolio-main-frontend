@@ -1,7 +1,7 @@
 import react, { useEffect, useState } from "react";
 import Router from "next/router";
 import { useQuery, prefetchQuery } from "react-query";
-import { baseurl } from "../../public/baseurl";
+import { cdnurl } from "../../public/url";
 import styles from "../../styles/Profile.module.css";
 import Profile from "../../components/Profile";
 import Submissions from "../../components/Submissions";
@@ -66,7 +66,7 @@ export default function profile({ data }) {
 export async function getServerSideProps(context) {
   const { username } = context.query;
 
-  const data = await fetch(`${baseurl}/profile?username=${username}`).then(
+  const data = await fetch(`${cdnurl}?username=${username}`).then(
     (res) => res.json()
   );
 

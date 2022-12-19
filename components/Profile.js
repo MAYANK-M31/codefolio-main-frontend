@@ -38,7 +38,7 @@ export default function Profile({ data }) {
   const user = data?.user;
   const globalrank = data?.leetcode?.data?.matchedUser?.profile?.ranking || 0;
   const schoolrank = data?.gfg?.data?.profile?.rank || 0;
-  const [imagelink, setimagelink] = useState(data?.user.profile || "/logo.svg");
+  const [imagelink, setimagelink] = useState(data?.user?.profile || "/logo.svg");
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
