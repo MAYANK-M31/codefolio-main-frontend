@@ -146,7 +146,7 @@
   }
 
   .linkBar p {
-    max-width: 32vw;
+    max-width: 40vw;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;

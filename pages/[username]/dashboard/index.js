@@ -57,7 +57,7 @@ export default function profile() {
     Fetch();
   }, []);
 
-  if (isLoading)
+  if (true)
     return (
       <div className={styles.loadContainer} >
       <Loader
@@ -85,7 +85,7 @@ export default function profile() {
       </Head>
 
       <HeaderMain username={data?.user?.username} />
-      
+
       <JoyRideNoSSR
         run={tour}
         steps={steps}

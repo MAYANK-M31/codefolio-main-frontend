@@ -43,9 +43,9 @@ export default function HeaderMain({ username }) {
       </div>
       <div className={styles.section}>
         <div className={styles.utility}>
-          <div className={styles.refresh}>
+          {/* <div className={styles.refresh}>
             <img src="/icons/reload.svg" />
-          </div>
+          </div> */}
           <div onClick={() => setopen((x) => !x)} className={styles.userBtn}>
             <p>{username}</p>
             <img src="/icons/angle-down.svg" />
