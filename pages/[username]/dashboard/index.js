@@ -57,7 +57,7 @@ export default function profile() {
     Fetch();
   }, []);
 
-  if (true)
+  if (isLoading)
     return (
       <div className={styles.loadContainer} >
       <Loader
