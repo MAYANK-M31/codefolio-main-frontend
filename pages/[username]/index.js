@@ -83,6 +83,7 @@ export async function getServerSideProps(context) {
     resData.user = res[0]?.user
     resData.gfg = res[1]?.gfg
     resData.leetcode = res[1]?.leetcode
+    resData.status = res[0]?.status || res[1]?.status
     return { props: { data:resData } }
   })
 
