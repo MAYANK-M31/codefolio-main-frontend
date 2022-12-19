@@ -18,6 +18,7 @@ const override = {
 import dynamic from "next/dynamic";
 import { getCookie, setCookie } from "cookies-next";
 import TypeWriter from "../../../components/Typewriter";
+import Head from "next/head";
 
 const JoyRideNoSSR = dynamic(() => import("react-joyride"), { ssr: false });
 
@@ -70,6 +71,7 @@ export default function profile() {
       />
       <p>Fetching your Awesome Profile <span className={styles.emoji}>😍</span></p>
       <p>Collecting & Merging Realtime Data from <TypeWriter data={["Leetcode.","GeeksForGeeks."]} /> </p>
+      <p style={{color:"#f65e72",fontWeight:400}} >Note :- Coding Stats sync after Every 24 Hours</p>
 
       </div>
     );
@@ -77,7 +79,13 @@ export default function profile() {
 
   return (
     <div>
+      <Head>
+        <title>{data?.user && data?.user?.name.toUpperCase()+":PORFOLIO" || "CODEFOLIO"}</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <HeaderMain username={data?.user?.username} />
+      
       <JoyRideNoSSR
         run={tour}
         steps={steps}

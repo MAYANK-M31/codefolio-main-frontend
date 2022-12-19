@@ -24,16 +24,17 @@ export default function profile({ data }) {
 
   return (
     <div className={styles.container}>
+
       <Head>
-        <title>CODEFOLIO:Link-In-Bio</title>
+        <title>{data?.user && data?.user?.name.toUpperCase()+":PORFOLIO" || "CODEFOLIO"}</title>
         <meta
           property="og:image"
-          content={`https://codefolio-mayank-m31.vercel.app/icons/vercel.png`}
+          content={data?.user?.profile || `https://codefolio-mayank-m31.vercel.app/icons/vercel.png`}
         />
 
         <meta
           name="description"
-          content="Build Stunning code porfolio in bio"
+          content={`This is my Porfolio please check out. Poweredby:Codefolio `}
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -71,6 +72,7 @@ export async function getServerSideProps(context) {
   const data =  fetch(`${cdnurl}?username=${username}`).then(
     (res) => res.json()
   );
+
   
   const onlyUserdata =  fetch(`${baseurl}/profile?username=${username}&onlyuserdata=true`).then(
     (res) => res.json()
