@@ -80,7 +80,7 @@ export default function profile() {
   return (
     <div>
       <Head>
-        <title>{data?.user && data?.user?.name.toUpperCase()+":PORFOLIO" || "CODEFOLIO"}</title>
+        <title>{data?.user && data?.user?.name.toUpperCase()+":PORTFOLIO" || "CODEFOLIO"}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

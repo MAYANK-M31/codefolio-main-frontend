@@ -26,7 +26,7 @@ export default function profile({ data }) {
     <div className={styles.container}>
 
       <Head>
-        <title>{data?.user && data?.user?.name.toUpperCase()+":PORFOLIO" || "CODEFOLIO"}</title>
+        <title>{data?.user && data?.user?.name.toUpperCase()+":PORTFOLIO" || "CODEFOLIO"}</title>
         <meta
           property="og:image"
           content={data?.user?.profile || `https://codefolio-mayank-m31.vercel.app/icons/vercel.png`}
