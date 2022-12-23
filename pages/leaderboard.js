@@ -34,7 +34,7 @@ function leaderboard() {
   return (
     <>
       <h1 id={styles.headline}>
-        <img src="https://s3-alpha-sig.figma.com/img/244f/de34/8b3fef7bf91367c80dbd6061757b841f?Expires=1672617600&Signature=pJqNhyMavn28Rp8uOXhix6gEKMK0jZkqpTsT9RDcImziNmTnlG6h~9Pe8aSK6GZbj7CPTqNurAjsE0cb2IihUzY7ZDyZyURQ0xRtoH4Jp719~YNaVFkbFMZhV2spWFbsf1mYsWnNNrn3gIliVLNAXZkZadyHcTx8q7484zymRggyAqGnC4ZJBWxY9UIU9QuZKoW6j9g800ly6p7YKrW6y3M4xzx4oDWITN3pPfavAq0RUybAEGVXR8evRagfAT4hL6lBczUDu9k4Jz5q75xskMDdBv2~ITsdoTkAKSoUvI6VdwH7jDkNrxcbWDJFE8UBN~nVomhWmWxOVclmtu1FmQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"></img>
+        <img src="https://codefolio-link.vercel.app/leaderboard"></img>
         Leaderboard
       </h1>
 
