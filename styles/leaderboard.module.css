@@ -1,0 +1,64 @@
+.leadercontainer{
+    width: 90%;
+    height: 80vh;
+    margin: auto;
+    /* background: red; */
+    border: 2px #1c1c1c solid;
+    border-radius: 20px;
+}
+
+.profile{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 5rem;
+    margin: auto;
+    margin-top: 2rem;
+    /* background-color: whitesmoke; */
+    border-radius: 1rem;
+    border: 2px #1c1c1c solid;
+}
+.profilepic{
+    width: 4rem;
+    
+}
+.profilepic img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+.stats{
+    width:20rem ;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
+.stats h4{
+    text-align: center;
+}
+#linkbutton{
+    color: black;
+    text-align: center;
+    font-weight: 500;
+    border-radius: 2rem;
+    width: 4rem;
+    height: 2rem;
+    padding-top: .3rem;
+    background: white;
+    border: none;
+}
+#headline{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+    font-weight: 600;
+    font-size: 2rem;
+    text-align: center;
+}
+#headline img {
+    width: 3rem;
+    margin-right:1rem ;
+    padding-bottom: 10px;
+}
