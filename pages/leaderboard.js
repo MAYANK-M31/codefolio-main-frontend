@@ -14,7 +14,10 @@ function leaderboard() {
       })
         .then(({ data }) => {
           if (data?.status == 200) {
-            setdata(data?.data);
+              var x= data?.data
+              x.sort(function(a, b){return a?.score > b?.score});
+              console.log(x);
+              setdata(x);
           }
         })
         .catch((e) => {
@@ -40,7 +43,7 @@ function leaderboard() {
           return (
             <div className={styles.profile}>
               <div className={styles.profilepic}>
-                <img src="https://yt3.googleusercontent.com/ytc/AMLnZu8-M0MU2hGLAq1hlgwrVF6XcfiD1HT-T-srIuuABg=s900-c-k-c0x00ffffff-no-rj"></img>
+                <img src={d?.profile} referrerpolicy="no-referrer"></img>
               </div>
 
               <h3>{d.username}</h3>
@@ -71,7 +74,12 @@ function leaderboard() {
               </div>
 
               <div id={styles.linkbutton}>
-                <button>Link</button>
+                <a
+                  href={`https://codefolio-link.vercel.app/${d.username}`}
+                  target="_blank"
+                >
+                  Link
+                </a>
               </div>
             </div>
           );
