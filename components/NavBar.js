@@ -5,7 +5,7 @@ export default function NavBar({ open }) {
   return (
     <div className={styles.Main}>
       <img src="/logo.svg" />
-      <button onClick={()=>Router.push("/leaderboard")} className={styles.leaderbtn}>Leaderboard</button>
+      {/* <button onClick={()=>Router.push("/leaderboard")} className={styles.leaderbtn}>Leaderboard</button> */}
       <GoogleAuth />
     </div>
   );
