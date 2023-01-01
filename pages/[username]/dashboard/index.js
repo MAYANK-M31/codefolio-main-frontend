@@ -59,11 +59,11 @@ export default function profile() {
   }, []);
 
   const toogleYear = (y) => {
+
     const Fetch = async () => {
       const response = await fetch(
         `${baseurl}/profile?username=${username}&year=${y}`
       ).then((res) => res.json());
-      setisloading(false);
       setdata(response);
     };
     Fetch();
