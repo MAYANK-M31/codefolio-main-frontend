@@ -41,38 +41,56 @@ export default function profile() {
   const [isLoading, setisloading] = useState(true);
   const [data, setdata] = useState(null);
 
+
   const tour = getCookie("tour") && true;
 
   const username = getCookie("username");
 
+  const Fetch = async () => {
+    const response = await fetch(
+      `${baseurl}/profile?username=${username}`
+    ).then((res) => res.json());
+    setisloading(false);
+    setdata(response);
+  };
+
   useEffect(() => {
+    Fetch();
+  }, []);
+
+  const toogleYear = (y) => {
     const Fetch = async () => {
       const response = await fetch(
-        `${baseurl}/profile?username=${username}`
+        `${baseurl}/profile?username=${username}&year=${y}`
       ).then((res) => res.json());
       setisloading(false);
       setdata(response);
     };
-
     Fetch();
-  }, []);
+  };
 
   if (isLoading)
     return (
-      <div className={styles.loadContainer} >
-      <Loader
-        color={"#ffffff"}
-        loading={true}
-        cssOverride={override}
-        size={35}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-        className={"loader"}
-      />
-      <p>Fetching your Awesome Profile <span className={styles.emoji}>😍</span></p>
-      <p>Collecting & Merging Realtime Data from <TypeWriter data={["Leetcode.","GeeksForGeeks."]} /> </p>
-      <p style={{color:"#f65e72",fontWeight:400}} >Note :- Coding Stats sync after Every 24 Hours</p>
-
+      <div className={styles.loadContainer}>
+        <Loader
+          color={"#ffffff"}
+          loading={true}
+          cssOverride={override}
+          size={35}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+          className={"loader"}
+        />
+        <p>
+          Fetching your Awesome Profile <span className={styles.emoji}>😍</span>
+        </p>
+        <p>
+          Collecting & Merging Realtime Data from{" "}
+          <TypeWriter data={["Leetcode.", "GeeksForGeeks."]} />{" "}
+        </p>
+        <p style={{ color: "#f65e72", fontWeight: 400 }}>
+          Note :- Coding Stats sync after Every 24 Hours
+        </p>
       </div>
     );
   if (data?.status == 404) return <h1>USER NOT FOUND</h1>;
@@ -80,7 +98,10 @@ export default function profile() {
   return (
     <div>
       <Head>
-        <title>{data?.user && data?.user?.name.toUpperCase()+":PORTFOLIO" || "CODEFOLIO"}</title>
+        <title>
+          {(data?.user && data?.user?.name.toUpperCase() + ":PORTFOLIO") ||
+            "CODEFOLIO"}
+        </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -119,7 +140,7 @@ export default function profile() {
           <div className={styles.containerTopLeft}>
             <Profile data={data} />
             <TotalSolved data={data} />
-            <Submissions data={data} />
+            <Submissions data={data} changeYear={toogleYear} currYear={new Date().getFullYear()} />
           </div>
 
           <div className={styles.containerTopRight}>

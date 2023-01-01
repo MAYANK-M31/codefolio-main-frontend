@@ -4,9 +4,12 @@ import _ from "underscore";
 import styles from "../styles/Submission.module.css";
 const currentYear = [moment(Date.now(), "x").year()];
 
-export default function Submissions({ data }) {
+export default function Submissions({ data, currYear, changeYear }) {
   var totalSubmission = 0;
-  var years = [2022];
+  const [years, setyears] = useState([]);
+  const [activeYear, setactiveYear] = useState(currYear);
+  const [open, setopen] = useState(false);
+
   var calendarData = [];
 
   const getSubmissionCalendar = (gfg = {}, leetcode = {}) => {
@@ -47,29 +50,47 @@ export default function Submissions({ data }) {
     )
   );
 
-  years.push(ActiveYears);
+  useEffect(() => {
+    setyears(ActiveYears);
+  }, []);
+
   calendarData = SubmissionCalendar;
 
   return (
     <div className={styles.submissionDiv}>
       <div className={styles.totalsubmission}>
         <h2>
-          {totalSubmission} <span>Submission in the last year</span>
+          {totalSubmission} <span>Submission in the {activeYear}</span>
         </h2>
-        <div className={styles.btnYear}>
-          <p>{years[0]}</p>
+        <div onClick={() => setopen((c) => !c)} className={styles.btnYear}>
+          <p>{activeYear || currYear}</p>
           <img src="/icons/angle-down.svg" />
+          {open && (
+            <div className={styles.dropdown}>
+              {years.map((data) => (
+                <div
+                  onClick={() => {
+                    setactiveYear(data), changeYear(data);
+                  }}
+                  className={styles.userBtn}
+                >
+                  {data}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
       <div className={styles.HeatMapDiv}>
-        <HeatMap data={calendarData} />
+        <HeatMap data={calendarData} currYear={activeYear} />
       </div>
     </div>
   );
 }
 
 // COMPONENT
-function HeatMap({ data }) {
+function HeatMap({ data, currYear }) {
+
   var getDaysOfMonth = function (year, month) {
     var temp = [];
     var days = moment(`${year}-${month}`, "YYYY-MM").daysInMonth();
@@ -92,7 +113,7 @@ function HeatMap({ data }) {
     return res;
   };
 
-  var calendar = getCalendarinYear(2022);
+  var calendar = getCalendarinYear(currYear);
 
   function getNumWeeksForMonth(year, month) {
     var date = new Date(year, month - 1, 1);
@@ -103,6 +124,7 @@ function HeatMap({ data }) {
 
   function MonthDiv({ timestamp, month }) {
     let year = moment(timestamp[0], "X").year();
+
     let start = moment(timestamp[0], "X").day();
     let end = moment(timestamp[timestamp.length - 1], "X").day();
     let Totalweeks = getNumWeeksForMonth(year, month);

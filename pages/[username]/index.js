@@ -15,8 +15,23 @@ import TotalSolved from "../../components/TotalSolved";
 
 export default function profile({ data }) {
   if (data?.status == 404) return <h1>USER NOT FOUND</h1>;
+  const [Data,setData] = useState(data)
+
+  useEffect(()=>{
+    setData(data)
+  },[data])
 
   const [link, setlink] = useState(`codefolio.link`);
+
+  const toogleYear = (y) => {
+    const Fetch = async () => {
+      const response = await fetch(
+        `${baseurl}/profile?username=${data?.user?.username}&year=${y}`
+      ).then((res) => res.json());
+      setData(response);
+    };
+    Fetch();
+  };
 
   useEffect(() => {
     setlink(`https://${window.location.host}`);
@@ -43,7 +58,7 @@ export default function profile({ data }) {
         <div className={styles.containerTopLeft}>
           <Profile data={data} />
           <TotalSolved data={data} />
-          <Submissions data={data} />
+          <Submissions data={Data} changeYear={toogleYear} currYear={new Date().getFullYear()} />
         </div>
         <div className={styles.containerTopRight}>
           <Links data={data} />

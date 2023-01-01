@@ -46,6 +46,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  position: relative;
 }
 
 .btnYear p {
@@ -146,6 +147,30 @@
 .Point:hover {
   visibility: visible;
 }
+
+.userBtn p {
+  max-width: 15vw;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  direction: rtl;
+}
+
+.dropdown {
+  width: 100%;
+  left: 0;
+  position: absolute;
+  top: 2.5em;
+  background-color: #1c1c1c;
+  padding: 0.5em 0.6em;
+  border-radius: 0.5em;
+  cursor: pointer;
+  font-size: 0.9em;
+  color: white;
+  font-weight: 400;
+}
+
+
 
 @media only screen and (max-width: 768px) {
   .submissionDiv {
